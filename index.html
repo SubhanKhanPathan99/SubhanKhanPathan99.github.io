@@ -1,143 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subhan Khan Pathan - Portfolio</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <style>
-        :root { --accent-color: #00FF00; /* Neon Green Accent */ }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-decoration: none; list-style: none; }
-        html { scroll-behavior: smooth; }
-        
-        body { 
-            background: #111111; /* Very Dark Charcoal/Black Background */
-            color: #ededed; 
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subhan Khan Pathan - Portfolio</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; padding: 25px 9%; display: flex; justify-content: space-between; align-items: center; z-index: 100; visibility: hidden; opacity: 0; animation: showContent 1.5s linear forwards 1.2s; }
-        .logo { font-size: 30px; font-weight: 700; color: #ededed; }
-        .navlist { display: flex; }
-        .navlist li a { font-size: 20px; font-weight: 500; color: #ededed; margin-left: 35px; transition: 0.5s; }
-        .navlist li a:hover, .navlist li a.active { color: var(--accent-color); }
-        
-        .home { display: flex; align-items: center; min-height: 100vh; padding: 60px 9% 0; gap: 50px; visibility: hidden; opacity: 0; animation: showContent 1.5s linear forwards 1.6s; }
+  <style>
+    :root { 
+      --accent-color: #00ff00;  /* Neon Green highlight */
+      --bg-color: #111111;      /* Dark background */
+      --secondary-bg: #1f1f1f;  /* Slightly lighter section */
+    }
 
-        .home-info { max-width: 600px; }
-        .home-info h1 { font-size: 55px; font-weight: 700; line-height: 1.3; }
-        .home-info h3 { font-size: 32px; font-weight: 700; margin: 10px 0; }
-        .home-info h3 span { color: var(--accent-color); }
-        .home-info p { font-size: 16px; margin: 20px 0 40px; }
-        
-        .btn-box { display: flex; align-items: center; gap: 30px; }
-        .btn { display: inline-block; padding: 10px 30px; background: var(--accent-color); border: 2px solid var(--accent-color); border-radius: 8px; box-shadow: 0 0 10px rgba(0, 255, 0, 0.6); font-size: 16px; color: #111111; font-weight: 600; transition: 0.5s; cursor: pointer; }
-        .btn:hover { background: transparent; color: var(--accent-color); box-shadow: none; }
-        
-        .social-icons a { display: inline-flex; justify-content: center; align-items: center; width: 40px; height: 40px; background: transparent; border: 2px solid var(--accent-color); border-radius: 50%; font-size: 20px; color: var(--accent-color); margin-right: 15px; transition: 0.5s; }
-        .social-icons a:hover { background: var(--accent-color); color: #111111; box-shadow: 0 0 10px rgba(0, 255, 0, 0.6); }
+    * { 
+      margin: 0; padding: 0; 
+      box-sizing: border-box; 
+      font-family: 'Poppins', sans-serif; 
+      text-decoration: none; 
+      list-style: none; 
+    }
+    html { scroll-behavior: smooth; }
 
-        .home-img { position: relative; width: 410px; height: 410px; }
-        .home-img .img-box { position: relative; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; display: flex; justify-content: center; align-items: center; }
-        .home-img .img-box img { width: 90%; object-fit: cover; border-radius: 50%; border: 3px solid var(--accent-color); }
+    body { 
+      background: var(--bg-color); 
+      color: #ededed; 
+    }
 
-        /* UPDATED: Rotating Arcs Animation */
-        .home-img::before, .home-img::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            border: 3px solid transparent;
-            border-radius: 50%;
-        }
-        .home-img::before {
-            width: 100%;
-            height: 100%;
-            border-top-color: var(--accent-color);
-            border-right-color: var(--accent-color);
-            transform: translate(-50%, -50%) rotate(45deg);
-            animation: rotateBorder 10s linear infinite;
-        }
-        .home-img::after {
-            width: 115%;
-            height: 115%;
-            border-bottom-color: var(--accent-color);
-            border-left-color: var(--accent-color);
-            transform: translate(-50%, -50%) rotate(-135deg);
-            animation: rotateBorder 10s linear infinite reverse; /* Reverse direction */
-        }
-        
-        .bars-animation { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; z-index: -1; }
-        .bar { width: 100%; height: 100%; background: var(--accent-color); transform: translateY(-100%); animation: showBars 0.5s ease-out forwards; animation-delay: calc(0.1s * var(--i)); }
-        
-        .projects { padding: 80px 9% 60px; background: #1f1f1f; }
-        
-        .section-title { text-align: center; font-size: 45px; margin-bottom: 60px; }
-        .section-title span { color: var(--accent-color); }
-        .project-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .project-card { background: #111111; border: 2px solid var(--accent-color); border-radius: 15px; padding: 30px; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .project-card:hover { transform: translateY(-10px); box-shadow: 0 0 25px rgba(0, 255, 0, 0.5); }
-        .project-card h3 { font-size: 24px; color: var(--accent-color); margin-bottom: 10px; }
-        .project-card p { font-size: 16px; line-height: 1.6; margin-bottom: 15px; flex-grow: 1; }
-        .project-card p strong { font-weight: 600; color: #ededed; }
-        .project-card .btn { width: fit-content; margin-top: auto; }
-        .project-card .btn i { margin-left: 8px; vertical-align: middle; }
-        
-        @keyframes showBars { 100% { transform: translateY(0%); } }
-        @keyframes showContent { 100% { visibility: visible; opacity: 1; } }
-        @keyframes rotateBorder { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
-    </style>
+    /* Navbar */
+    .navbar { 
+      position: fixed; 
+      top: 0; left: 0; 
+      width: 100%; 
+      padding: 25px 9%; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      z-index: 100; 
+      background: rgba(17, 17, 17, 0.95); 
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .logo { font-size: 30px; font-weight: 700; color: #ededed; }
+    .navlist { display: flex; }
+    .navlist li a { font-size: 18px; font-weight: 500; color: #ededed; margin-left: 35px; transition: 0.3s; }
+    .navlist li a:hover, .navlist li a.active { color: var(--accent-color); }
+
+    /* Home */
+    .home { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
+      min-height: 100vh; 
+      padding: 60px 9% 0; 
+      gap: 50px; 
+    }
+
+    .home-info { max-width: 600px; }
+    .home-info h1 { font-size: 55px; font-weight: 700; line-height: 1.3; }
+    .home-info h3 { font-size: 32px; font-weight: 700; margin: 10px 0; }
+    .home-info h3 span { color: var(--accent-color); }
+    .home-info p { font-size: 16px; margin: 20px 0 40px; line-height: 1.6; }
+    
+    /* Buttons */
+    .btn-box { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .btn { 
+      display: inline-block; 
+      padding: 10px 30px; 
+      background: var(--accent-color); 
+      border: 2px solid var(--accent-color); 
+      border-radius: 8px; 
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.6); 
+      font-size: 16px; 
+      color: #111111; 
+      font-weight: 600; 
+      transition: 0.4s; 
+      cursor: pointer; 
+    }
+    .btn:hover { background: transparent; color: var(--accent-color); box-shadow: none; }
+
+    /* Social Icons */
+    .social-icons a { 
+      display: inline-flex; justify-content: center; align-items: center; 
+      width: 40px; height: 40px; 
+      border: 2px solid var(--accent-color); 
+      border-radius: 50%; 
+      font-size: 20px; 
+      color: var(--accent-color); 
+      transition: 0.3s; 
+    }
+    .social-icons a:hover { background: var(--accent-color); color: #111111; box-shadow: 0 0 10px rgba(0, 255, 0, 0.6); }
+
+    /* Image */
+    .home-img { position: relative; width: 350px; height: 350px; }
+    .home-img .img-box { 
+      position: relative; 
+      width: 100%; height: 100%; 
+      border-radius: 50%; 
+      overflow: hidden; 
+      display: flex; justify-content: center; align-items: center; 
+    }
+    .home-img .img-box img { 
+      width: 90%; 
+      object-fit: cover; 
+      border-radius: 50%; 
+      border: 3px solid var(--accent-color); 
+    }
+
+    /* Rotating Borders */
+    .home-img::before, .home-img::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      border: 3px solid transparent;
+      border-radius: 50%;
+    }
+    .home-img::before {
+      width: 100%; height: 100%;
+      border-top-color: var(--accent-color);
+      border-right-color: var(--accent-color);
+      transform: translate(-50%, -50%) rotate(45deg);
+      animation: rotateBorder 10s linear infinite;
+    }
+    .home-img::after {
+      width: 115%; height: 115%;
+      border-bottom-color: var(--accent-color);
+      border-left-color: var(--accent-color);
+      transform: translate(-50%, -50%) rotate(-135deg);
+      animation: rotateBorder 10s linear infinite reverse;
+    }
+
+    /* Bars Animation (background effect) */
+    .bars-animation { 
+      position: absolute; 
+      top: 0; left: 0; 
+      width: 100%; height: 100%; 
+      display: flex; 
+      z-index: -1; 
+    }
+    .bar { 
+      width: 100%; height: 100%; 
+      background: linear-gradient(to top, rgba(0,255,0,0.2), transparent); 
+      transform: translateY(-100%); 
+      animation: showBars 0.5s ease-out forwards; 
+      animation-delay: calc(0.1s * var(--i)); 
+    }
+
+    /* Projects Section */
+    .projects { padding: 80px 9% 60px; background: var(--secondary-bg); }
+    .section-title { text-align: center; font-size: 45px; margin-bottom: 60px; }
+    .section-title span { color: var(--accent-color); }
+    .project-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+    .project-card { 
+      background: #111111; 
+      border: 2px solid var(--accent-color); 
+      border-radius: 15px; 
+      padding: 30px; 
+      display: flex; flex-direction: column; 
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    }
+    .project-card:hover { transform: translateY(-10px); box-shadow: 0 0 25px rgba(0, 255, 0, 0.5); }
+    .project-card h3 { font-size: 22px; color: var(--accent-color); margin-bottom: 10px; }
+    .project-card p { font-size: 15px; line-height: 1.6; margin-bottom: 15px; flex-grow: 1; }
+    .project-card p strong { font-weight: 600; color: #ededed; }
+    .project-card .btn { width: fit-content; margin-top: auto; }
+    .project-card .btn i { margin-left: 8px; vertical-align: middle; }
+
+    /* Animations */
+    @keyframes showBars { 100% { transform: translateY(0%); } }
+    @keyframes rotateBorder { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+  </style>
 </head>
 <body>
-    <div class="bars-animation">
-        <div class="bar" style="--i:6;"></div><div class="bar" style="--i:5;"></div><div class="bar" style="--i:4;"></div><div class="bar" style="--i:3;"></div><div class="bar" style="--i:2;"></div><div class="bar" style="--i:1;"></div>
+  <div class="bars-animation">
+    <div class="bar" style="--i:6;"></div>
+    <div class="bar" style="--i:5;"></div>
+    <div class="bar" style="--i:4;"></div>
+    <div class="bar" style="--i:3;"></div>
+    <div class="bar" style="--i:2;"></div>
+    <div class="bar" style="--i:1;"></div>
+  </div>
+
+  <nav class="navbar">
+    <a href="#" class="logo">Portfolio</a>
+    <ul class="navlist">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="home" class="home">
+    <div class="home-info">
+      <h1>Subhan Khan Pathan</h1>
+      <h3>I'm a <span>QA Automation Engineer</span></h3>
+      <p>Senior QA Automation Engineer with 6+ years of experience delivering high-quality software solutions. Skilled in building scalable test automation frameworks and integrating QA into CI/CD pipelines.</p>
+      <div class="btn-box">
+        <a href="resume.pdf" download class="btn">Download CV</a>
+        <div class="social-icons">
+          <a href="https://github.com/SubhanKhanPathan99" target="_blank"><i class='bx bxl-github'></i></a>
+          <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank"><i class='bx bxl-linkedin'></i></a>
+        </div>
+      </div>
     </div>
-    <nav class="navbar">
-        <a href="#" class="logo">Portfolio</a>
-        <ul class="navlist">
-            <li><a href="#home" class="active">Home</a></li><li><a href="#projects">Projects</a></li><li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-    <section id="home" class="home">
-        <div class="home-info">
-            <h1>Subhan Khan Pathan</h1>
-            <h3>I'm a <span>QA Automation Engineer</span></h3>
-            <p>Senior QA Automation Engineer with 6+ years of experience delivering high-quality software solutions. Skilled in building scalable test automation frameworks and integrating QA into CI/CD pipelines.</p>
-            <div class="btn-box">
-                <a href="resume.pdf" download class="btn">Download CV</a>
-                <div class="social-icons">
-                    <a href="https://github.com/SubhanKhanPathan99" target="_blank"><i class='bx bxl-github'></i></a>
-                    <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank"><i class='bx bxl-linkedin'></i></a>
-                    </div>
-            </div>
-        </div>
-        <div class="home-img">
-            <div class="img-box">
-                <img src="your-photo.png" alt="Your Photo">
-            </div>
-        </div>
-    </section>
-    <section id="projects" class="projects">
-        <h2 class="section-title">My Recent <span>Projects</span></h2>
-        <div class="project-container">
-            <div class="project-card">
-                <h3>Selenium Automation Framework</h3>
-                <p>A scalable test automation framework built with Selenium and Java for a financial services web application. It uses the Page Object Model (POM) for maintainability.</p>
-                <p><strong>Technologies:</strong> Java, Selenium WebDriver, TestNG, Maven</p>
-                <a href="https://github.com/your-username/your-repo-1" target="_blank" class="btn">View on GitHub <i class='bx bxl-github'></i></a>
-            </div>
-            <div class="project-card">
-                <h3>Cypress E-Commerce Testing</h3>
-                <p>End-to-end automated tests for an e-commerce platform. Validated critical user flows, including product search, shopping cart functionality, and the checkout process.</p>
-                <p><strong>Technologies:</strong> Cypress, JavaScript, Mocha, Chai</p>
-                <a href="https://github.com/your-username/your-repo-2" target="_blank" class="btn">View on GitHub <i class='bx bxl-github'></i></a>
-            </div>
-            <div class="project-card">
-                <h3>API Performance Testing with JMeter</h3>
-                <p>Conducted load and stress testing on REST APIs using Apache JMeter. Identified performance bottlenecks and provided recommendations to improve scalability and response times.</p>
-                <p><strong>Technologies:</strong> Apache JMeter, Postman, REST APIs</p>
-                <a href="https://github.com/your-username/your-repo-3" target="_blank" class="btn">View on GitHub <i class='bx bxl-github'></i></a>
-            </div>
-        </div>
-    </section>
+
+    <div class="home-img">
+      <div class="img-box">
+        <img src="profile.jpg" alt="Subhan Khan Pathan">
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+    <h2 class="section-title">My Recent <span>Projects</span></h2>
+    <div class="project-container">
+      <div class="project-card">
+        <h3>Selenium Automation Framework</h3>
+        <p>A scalable test automation framework built with Selenium and Java for a financial services web application. It uses the Page Object Model (POM) for maintainability.</p>
+        <p><strong>Technologies:</strong> Java, Selenium WebDriver, TestNG, Maven</p>
+        <a href="https://github.com/your-username/your-repo-1" target="_blank" class="btn">View on GitHub <i class='bx bxl-github'></i></a>
+      </div>
+
+      <div class="project-card">
+        <h3>Cypress E-Commerce Testing</h3>
+        <p>End-to-end automated tests for an e-commerce platform. Validated critical user flows, including product search, shopping cart functionality, and the checkout process.</p>
+        <p><strong>Technologies:</strong> Cypress, JavaScript, Mocha, Chai</p>
+        <a href="https://github.com/your-username/your-repo-2" target="_blank" class="btn">View on GitHub <i class='bx bxl-github'></i></a>
+      </div>
+
+      <div class="project-card">
+        <h3>API Performance Testing with JMeter</h3>
+        <p>Conducted load and stress testing on REST APIs using Apache JMeter. Identified performance bottlenecks and provided recommendations to improve scalability and response times.</p>
+        <p><strong>Technologies:</strong> Apache JMeter, Postman, REST APIs</p>
+        <a href="https://github.com/your-username/your-repo-3" target="_blank" class="btn">View on GitHub <i class='bx bxl-github'></i></a>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
