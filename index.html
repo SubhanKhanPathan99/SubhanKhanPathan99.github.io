@@ -10,21 +10,11 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-decoration: none; list-style: none; }
         html { scroll-behavior: smooth; }
         
-        /* UPDATED: Disco Background Animation */
-        body {
-            color: #ededed;
-            animation: disco 10s linear infinite;
+        body { 
+            background: #366B6D; /* UPDATED: Your new background color */
+            color: #ededed; 
         }
 
-        .navbar, .home, .projects {
-            background: transparent; /* Make sections transparent to see the body animation */
-        }
-        
-        .project-card, .img-item, .img-box, .home-info h2 span::before {
-             background: rgba(26, 26, 26, 0.8); /* Semi-transparent dark background for readability */
-        }
-
-        /* Navbar Styling */
         .navbar { position: fixed; top: 0; left: 0; width: 100%; padding: 25px 9%; display: flex; justify-content: space-between; align-items: center; z-index: 100; visibility: hidden; opacity: 0; animation: showContent 1.5s linear forwards 1.2s; }
         .logo { font-size: 30px; font-weight: 700; color: #ededed; }
         .navlist { display: flex; }
@@ -34,7 +24,7 @@
         .home-info h1 { font-size: 55px; font-weight: 700; line-height: 1.3; }
         .home-info h2 { font-size: 32px; font-weight: 700; margin-top: -10px; display: inline-block; }
         .home-info h2 span { color: transparent; -webkit-text-stroke: 0.7px var(--accent-color); display: inline-block; position: relative; }
-        .home-info h2 span::before { content: attr(data-text); position: absolute; top: 0; left: 0; width: 0; height: 100%; border-right: 2px solid var(--accent-color); overflow: hidden; color: var(--accent-color); white-space: nowrap; animation: fillText 4s linear infinite, displayText 16s linear infinite; animation-delay: calc(-4s * var(--i)); }
+        .home-info h2 span::before { content: attr(data-text); position: absolute; top: 0; left: 0; width: 0; height: 100%; background: #366B6D; /* UPDATED: Match background */ border-right: 2px solid var(--accent-color); overflow: hidden; color: var(--accent-color); white-space: nowrap; animation: fillText 4s linear infinite, displayText 16s linear infinite; animation-delay: calc(-4s * var(--i)); }
         .home-info p { font-size: 16px; margin: 10px 0 25px 0; }
         .btn-sci { display: flex; align-items: center; }
         .btn { display: inline-block; padding: 10px 30px; background: var(--accent-color); border: 2px solid var(--accent-color); border-radius: 40px; box-shadow: 0 0 10px rgba(97, 255, 217, 0.6); font-size: 16px; color: #1a1a1a; font-weight: 600; transition: 0.5s; cursor: pointer; }
@@ -43,18 +33,21 @@
         .sci a { display: inline-flex; justify-content: center; align-items: center; width: 40px; height: 40px; background: transparent; border: 2px solid var(--accent-color); border-radius: 50%; font-size: 20px; color: var(--accent-color); margin: 0 8px; transition: 0.5s; }
         .sci a:hover { background: var(--accent-color); color: #1a1a1a; box-shadow: 0 0 10px rgba(97, 255, 217, 0.6); }
         .home-img { width: 32vw; height: 32vw; border-radius: 50%; padding: 5px; position: relative; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-        .img-box { position: relative; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; display: flex; justify-content: center; align-items: center; border: 2px solid transparent; }
-        .img-item { position: relative; width: 100%; height: 100%; border-radius: 50%; z-index: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        .img-box { position: relative; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; display: flex; justify-content: center; align-items: center; border: 2px solid #366B6D; /* UPDATED: Match background */ }
+        .img-item { position: relative; width: 100%; height: 100%; border-radius: 50%; background: #366B6D; /* UPDATED: Match background */ z-index: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; }
         .img-item img { position: absolute; display: block; width: 85%; object-fit: cover; mix-blend-mode: lighten; top: 30px; }
         .img-box::before, .img-box::after { content: ''; position: absolute; width: 500px; height: 500px; background: conic-gradient(transparent, var(--accent-color)); border-radius: 50%; animation: rotateBorder 10s linear infinite; }
         .img-box::after { animation-delay: -5s; }
         .bars-animation { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; z-index: -1; }
         .bar { width: 100%; height: 100%; background: var(--accent-color); transform: translateY(-100%); animation: showBars 0.5s ease-out forwards; animation-delay: calc(0.1s * var(--i)); }
-        .projects { padding: 80px 9% 60px; }
+        
+        /* UPDATED: Projects section has a slightly darker shade for contrast */
+        .projects { padding: 80px 9% 60px; background: #2A5D5F; }
+        
         .section-title { text-align: center; font-size: 45px; margin-bottom: 60px; }
         .section-title span { color: var(--accent-color); }
         .project-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .project-card { border: 2px solid var(--accent-color); border-radius: 15px; padding: 30px; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .project-card { background: #366B6D; /* UPDATED: Match background */ border: 2px solid var(--accent-color); border-radius: 15px; padding: 30px; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .project-card:hover { transform: translateY(-10px); box-shadow: 0 0 25px rgba(97, 255, 217, 0.5); }
         .project-card h3 { font-size: 24px; color: var(--accent-color); margin-bottom: 10px; }
         .project-card p { font-size: 16px; line-height: 1.6; margin-bottom: 15px; flex-grow: 1; }
@@ -62,21 +55,6 @@
         .project-card .btn { width: fit-content; margin-top: auto; }
         .project-card .btn i { margin-left: 8px; vertical-align: middle; }
         
-        /* Keyframe Animations */
-        @keyframes disco {
-            0%   { background-color: red; }
-            10%  { background-color: orange; }
-            20%  { background-color: yellow; }
-            30%  { background-color: lime; }
-            40%  { background-color: green; }
-            50%  { background-color: cyan; }
-            60%  { background-color: blue; }
-            70%  { background-color: indigo; }
-            80%  { background-color: violet; }
-            90%  { background-color: magenta; }
-            100% { background-color: red; }
-        }
-
         @keyframes showBars { 100% { transform: translateY(0%); } }
         @keyframes showContent { 100% { visibility: visible; opacity: 1; } }
         @keyframes displayText { 0%, 25% { display: inline-block; } 26%, 100% { display: none; } }
