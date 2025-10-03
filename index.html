@@ -3,173 +3,162 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subhan Khan Pathan | Portfolio</title>
+  <title>Portfolio - Subhan Khan Pathan</title>
   <style>
-    /* General Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      background: #0a0a0a;
-      color: white;
+      background-color: #0d0d0d;
+      color: #fff;
       overflow-x: hidden;
     }
 
-    /* Navbar */
-    header {
+    /* Background animation */
+    body::before {
+      content: '';
       position: fixed;
       top: 0; left: 0;
-      width: 100%;
-      padding: 15px 50px;
-      background: rgba(0,0,0,0.9);
+      width: 100%; height: 100%;
+      background: url('https://i.ibb.co/G7KhH2c/space-bg.gif') repeat;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 15px 50px;
+      background: #000;
+      position: sticky;
+      top: 0;
       z-index: 1000;
     }
-    header h2 { font-size: 22px; font-weight: bold; }
     nav a {
-      margin: 0 15px;
-      text-decoration: none;
       color: white;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover, nav a.active { color: #00ff6a; }
-
-    /* Section */
-    section { padding: 100px 10%; min-height: 100vh; }
-
-    /* Home Flip Card */
-    #home {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .home-card {
-      width: 700px; height: 400px;
-      perspective: 1000px;
-    }
-    .home-inner {
-      width: 100%; height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 1s;
-    }
-    .home-card:hover .home-inner { transform: rotateY(180deg); }
-    .home-front, .home-back {
-      position: absolute;
-      width: 100%; height: 100%;
-      backface-visibility: hidden;
-      border: 2px solid #00ff6a;
-      border-radius: 15px;
-      padding: 30px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center;
-    }
-    .home-front {
-      background: #111;
-    }
-    .home-back {
-      background: #0f0f0f;
-      transform: rotateY(180deg);
-    }
-    .home-front img {
-      width: 150px; height: 150px;
-      border-radius: 50%;
-      border: 3px solid #00ff6a;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
-    .home-front h1 { font-size: 36px; margin-bottom: 10px; }
-    .home-front h2 {
-      font-size: 22px;
-      margin-bottom: 15px;
-      color: #00ff6a;
-      min-height: 28px;
-    }
-    .home-front a {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #00ff6a;
-      color: black;
-      font-weight: bold;
-      border-radius: 25px;
       text-decoration: none;
-      transition: box-shadow 0.3s;
+      margin: 0 15px;
+      font-weight: bold;
     }
-    .home-front a:hover { box-shadow: 0 0 15px #00ff6a; }
+    nav a:hover { color: limegreen; }
 
-    /* Experience */
-    #experience h2, #projects h2, #skills h2, #contact h2 {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 40px;
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 10%;
     }
-    .exp-container {
-      display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;
+    .hero-text {
+      flex: 1;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    .hero-text h2 {
+      font-size: 1.5rem;
+      color: limegreen;
+      margin-bottom: 15px;
+      height: 40px;
+      overflow: hidden;
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      max-width: 500px;
+    }
+    .btn {
+      background: limegreen;
+      padding: 12px 25px;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    .btn:hover { background: darkgreen; color: #fff; }
+
+    .hero img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 3px solid limegreen;
+    }
+
+    /* Section headings */
+    section {
+      padding: 60px 10%;
+      text-align: center;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    /* Experience Cards */
+    .experience-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
     }
     .exp-card {
       background: #111;
-      border: 2px solid #00ff6a;
-      border-radius: 12px;
+      border: 2px solid limegreen;
+      border-radius: 10px;
       padding: 20px;
-      width: 30%;
-      transition: transform 0.3s, box-shadow 0.3s;
+      width: 300px;
+      text-align: left;
+      transition: 0.3s;
     }
-    .exp-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 20px #00ff6a;
-    }
+    .exp-card:hover { background: #0a0; transform: scale(1.05); }
+    .exp-card h3 { margin: 0; color: limegreen; }
 
-    /* Projects Flip Cards */
+    /* Project Flip Cards */
     .projects-container {
       display: flex;
-      justify-content: center;
-      gap: 40px;
       flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
     }
     .project-card {
-      width: 300px; height: 350px;
+      width: 300px;
+      height: 380px;
       perspective: 1000px;
     }
     .project-inner {
-      width: 100%; height: 100%;
       position: relative;
-      transform-style: preserve-3d;
+      width: 100%; height: 100%;
+      text-align: center;
       transition: transform 0.8s;
+      transform-style: preserve-3d;
     }
-    .project-card:hover .project-inner { transform: rotateY(180deg); }
+    .project-card:hover .project-inner {
+      transform: rotateY(180deg);
+    }
     .project-front, .project-back {
       position: absolute;
       width: 100%; height: 100%;
+      border: 2px solid limegreen;
+      border-radius: 10px;
       backface-visibility: hidden;
-      border: 2px solid #00ff6a;
-      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       padding: 20px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center;
     }
-    .project-front img, .project-back img {
-      width: 100%; height: 180px;
-      border-radius: 8px;
+    .project-front img {
+      width: 100%; height: 150px;
       object-fit: cover;
-      margin-bottom: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
     }
-    .project-front { background: #111; }
+    .project-front h3 { margin-bottom: 10px; }
     .project-back {
-      background: #0f0f0f;
+      background: #111;
       transform: rotateY(180deg);
-    }
-    .project-back a {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #00ff6a;
-      border-radius: 20px;
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
     }
 
     /* Skills */
@@ -180,148 +169,132 @@
       gap: 15px;
     }
     .skill {
-      padding: 12px 18px;
-      border: 2px solid #00ff6a;
-      border-radius: 25px;
-      background: #111;
-      transition: transform 0.3s, box-shadow 0.3s;
+      padding: 10px 20px;
+      border: 2px solid limegreen;
+      border-radius: 20px;
+      transition: 0.3s;
     }
-    .skill:hover {
-      transform: scale(1.2);
-      box-shadow: 0 0 15px #00ff6a;
-    }
+    .skill:hover { background: limegreen; color: black; transform: scale(1.1); }
 
     /* Contact */
     .contact-container {
-      display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
     }
     .contact-item {
-      padding: 15px 25px;
-      border: 2px solid #00ff6a;
-      border-radius: 25px;
-      background: #111;
+      padding: 12px 20px;
+      border: 2px solid limegreen;
+      border-radius: 30px;
       transition: 0.3s;
     }
-    .contact-item:hover {
-      box-shadow: 0 0 15px #00ff6a, 0 0 30px #00ff6a;
-    }
-
-    /* Background Animation */
-    #particles {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -1;
-    }
+    .contact-item:hover { background: limegreen; color: black; box-shadow: 0 0 15px limegreen; }
   </style>
 </head>
 <body>
-  <div id="particles"></div>
-
-  <!-- Navbar -->
-  <header>
-    <h2>Portfolio</h2>
-    <nav>
-      <a href="#home" class="active">Home</a>
+  <nav>
+    <div class="logo"><b>Portfolio</b></div>
+    <div>
+      <a href="#home">Home</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <!-- Home (Flip Card) -->
-  <section id="home">
-    <div class="home-card">
-      <div class="home-inner">
-        <!-- Front -->
-        <div class="home-front">
-          <img src="Image.png" alt="Profile">
-          <h1>Subhan Khan Pathan</h1>
-          <h2 id="role"></h2>
-          <p>Senior QA Automation Engineer | 6+ years | Finance, Insurance, Retail, E-Commerce</p>
-          <a href="Resume.pdf" target="_blank">View Resume</a>
-        </div>
-        <!-- Back -->
-        <div class="home-back">
-          <p>Automation Engineer skilled in Selenium, Cypress, Playwright, and CI/CD pipelines. Experienced in delivering scalable QA solutions, database validation, and cloud testing.</p>
-          <a href="https://github.com/SubhanKhanPathan99" target="_blank">My GitHub</a>
-        </div>
-      </div>
     </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-text">
+      <h1>Subhan Khan Pathan</h1>
+      <h2 id="role">QA Automation Engineer</h2>
+      <p>Senior QA Automation Engineer with 6+ years of experience delivering high-quality solutions across finance, insurance, retail, and e-commerce. Skilled in test automation frameworks, CI/CD, and cloud testing.</p>
+      <a href="Resume.pdf" class="btn" target="_blank">View Resume</a>
+    </div>
+    <img src="Image.png" alt="Profile">
   </section>
 
-  <!-- Experience -->
+  <!-- Experience Section -->
   <section id="experience">
     <h2>My Experience</h2>
-    <div class="exp-container">
+    <div class="experience-container">
       <div class="exp-card">
         <h3>Answer Financial</h3>
-        <p><b>Senior QA Tester</b> | Sep 2024 – Present</p>
+        <p><b>Senior QA Tester</b><br>Sep 2024 – Present</p>
         <ul>
-          <li>Architected automation frameworks with Selenium, Cypress, Playwright.</li>
-          <li>Integrated QA in CI/CD pipelines (Jenkins, GitHub Actions, Azure).</li>
-          <li>Reduced regression cycle by 45%.</li>
+          <li>Architected automation frameworks (Selenium, Cypress, Playwright).</li>
+          <li>Performed API validation with Postman, Swagger, SOAP UI.</li>
+          <li>Embedded QA in CI/CD pipelines (Jenkins, GitHub Actions, Azure DevOps).</li>
         </ul>
       </div>
       <div class="exp-card">
         <h3>MetLife</h3>
-        <p><b>Senior QA Tester</b> | Jun 2020 – Oct 2022</p>
+        <p><b>Senior QA Tester</b><br>Jun 2020 – Oct 2022</p>
         <ul>
-          <li>Automated regression suites with Selenium + Cypress BDD.</li>
-          <li>Simulated load testing with JMeter, reduced checkout issues.</li>
+          <li>Automated regression with Selenium, Cypress BDD.</li>
+          <li>Performed performance testing with JMeter & LoadRunner.</li>
+          <li>Validated shopping cart, payment workflows, and APIs.</li>
         </ul>
       </div>
       <div class="exp-card">
         <h3>Mphasis</h3>
-        <p><b>QA Engineer</b> | Jun 2018 – Jun 2020</p>
+        <p><b>QA Engineer</b><br>Jun 2018 – Jun 2020</p>
         <ul>
-          <li>Designed automated regression and smoke testing suites.</li>
-          <li>Performed SQL queries for backend validation.</li>
+          <li>Automated regression & smoke testing (Selenium, Jenkins).</li>
+          <li>Executed SQL queries for backend validation & ETL testing.</li>
+          <li>Cross-platform testing with BrowserStack.</li>
         </ul>
       </div>
       <div class="exp-card">
         <h3>QA Intern</h3>
-        <p><b>Jun 2017 – May 2018</b></p>
+        <p><b>Intern</b><br>Jun 2017 – May 2018</p>
         <ul>
-          <li>Created test cases and logged defects in tracking tools.</li>
-          <li>Supported monitoring and analysis of system issues.</li>
+          <li>Supported test case creation & defect logging.</li>
+          <li>Performed application monitoring & issue analysis.</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- Projects (Flip Cards) -->
+  <!-- Projects Section -->
   <section id="projects">
     <h2>My Projects</h2>
     <div class="projects-container">
+      <!-- Playwright -->
       <div class="project-card">
         <div class="project-inner">
           <div class="project-front">
             <img src="playwright-cross-browser_831x542.jpg" alt="Playwright">
-            <h3>Playwright Automation Framework</h3>
+            <h3>Playwright Automation</h3>
+            <p>Cross-browser automation with Playwright.</p>
+            <a href="https://github.com/SubhanKhanPathan99/PLA_Automation_Tutorial" class="btn" target="_blank">GitHub</a>
           </div>
           <div class="project-back">
-            <p>Cross-browser automation with Playwright. Integrated pipelines using GitHub Actions & Azure DevOps. HTML + Allure reporting.</p>
-            <a href="https://github.com/SubhanKhanPathan99/PLA_Automation_Tutorial" target="_blank">View on GitHub</a>
+            <h3>Playwright Automation Framework</h3>
+            <p>End-to-end automation with Playwright integrated into CI/CD pipelines (Azure DevOps, GitHub Actions, AWS CodeBuild). Includes HTML & Allure reports, parallel testing, and cross-browser coverage.</p>
           </div>
         </div>
       </div>
+      <!-- DBMS -->
       <div class="project-card">
         <div class="project-inner">
           <div class="project-front">
             <img src="dbms.jpg" alt="DBMS">
             <h3>DBMS Project</h3>
+            <p>Database Management System project.</p>
+            <a href="https://github.com/SubhanKhanPathan99/DBMS-PROJECT" class="btn" target="_blank">GitHub</a>
           </div>
           <div class="project-back">
-            <p>Database Management System for efficient queries, schema optimization, and CRUD operations with real-time updates.</p>
-            <a href="https://github.com/SubhanKhanPathan99/DBMS-PROJECT" target="_blank">View on GitHub</a>
+            <h3>DBMS Project</h3>
+            <p>Built a database management system with efficient queries, schema optimization, CRUD operations, and real-time validations. Designed for academic and enterprise workflows.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills -->
+  <!-- Skills Section -->
   <section id="skills">
     <h2>My Skills</h2>
     <div class="skills-container">
@@ -334,6 +307,7 @@
       <div class="skill">Jenkins</div>
       <div class="skill">GitHub Actions</div>
       <div class="skill">Azure DevOps</div>
+      <div class="skill">CircleCI</div>
       <div class="skill">AWS Cloud</div>
       <div class="skill">Docker</div>
       <div class="skill">Git</div>
@@ -341,59 +315,40 @@
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- Contact Section -->
   <section id="contact">
     <h2>Contact Me</h2>
     <div class="contact-container">
       <div class="contact-item">📞 +1 (316) 925-9995</div>
-      <div class="contact-item">📧 subhankhanpathan99@gmail.com</div>
+      <div class="contact-item">✉️ subhankhanpathan99@gmail.com</div>
       <div class="contact-item"><a href="https://linkedin.com" target="_blank">LinkedIn</a></div>
       <div class="contact-item"><a href="https://github.com/SubhanKhanPathan99" target="_blank">GitHub</a></div>
     </div>
   </section>
 
-  <!-- Role Animation + Background Particles -->
+  <!-- Role Animation -->
   <script>
-    // Role Animation
-    const roles = ["QA Automation Engineer", "Test Automation Specialist", "Selenium/Cypress Expert", "Playwright Developer"];
-    let roleIndex = 0, charIndex = 0;
+    const roles = ["QA Automation Engineer", "Selenium/Cypress Specialist", "Playwright Expert", "Test Automation Specialist", "CI/CD & Cloud Enthusiast"];
+    let roleIndex = 0;
     const roleElement = document.getElementById("role");
 
     function typeRole() {
-      if (charIndex < roles[roleIndex].length) {
-        roleElement.textContent += roles[roleIndex].charAt(charIndex);
-        charIndex++;
-        setTimeout(typeRole, 100);
-      } else {
-        setTimeout(eraseRole, 1500);
-      }
-    }
-    function eraseRole() {
-      if (charIndex > 0) {
-        roleElement.textContent = roles[roleIndex].substring(0, charIndex - 1);
-        charIndex--;
-        setTimeout(eraseRole, 50);
-      } else {
-        roleIndex = (roleIndex + 1) % roles.length;
-        setTimeout(typeRole, 200);
-      }
+      let role = roles[roleIndex];
+      let i = 0;
+      roleElement.textContent = "";
+      let typing = setInterval(() => {
+        roleElement.textContent += role[i];
+        i++;
+        if (i === role.length) {
+          clearInterval(typing);
+          setTimeout(() => {
+            roleIndex = (roleIndex + 1) % roles.length;
+            typeRole();
+          }, 2000);
+        }
+      }, 100);
     }
     typeRole();
-
-    // Background Particles
-    const particles = document.getElementById("particles");
-    for (let i = 0; i < 100; i++) {
-      const dot = document.createElement("div");
-      dot.style.position = "absolute";
-      dot.style.width = "4px"; dot.style.height = "4px";
-      dot.style.background = "#00ff6a";
-      dot.style.borderRadius = "50%";
-      dot.style.top = Math.random() * 100 + "%";
-      dot.style.left = Math.random() * 100 + "%";
-      dot.style.opacity = Math.random();
-      dot.style.animation = `move ${5 + Math.random() * 10}s linear infinite`;
-      particles.appendChild(dot);
-    }
   </script>
 </body>
 </html>
