@@ -44,11 +44,9 @@
     .section-title {text-align:center; font-size:36px; margin-bottom:40px;}
     .section-title span {color:var(--accent);}
 
-    /* EXPERIENCE SIDE-BY-SIDE */
+    /* EXPERIENCE */
     .experience-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
-      gap:20px;
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); gap:20px;
     }
     .timeline-item {
       background:#1a1a1a; border:2px solid var(--accent); border-radius:12px;
@@ -81,12 +79,26 @@
     .projects-container {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px;}
     .project-card {
       background:#1a1a1a; padding:20px; border:2px solid var(--accent); border-radius:12px; transition:.3s;
-      opacity:0; transform:translateY(30px);
+      cursor:pointer; opacity:0; transform:translateY(30px);
     }
     .project-card.show {opacity:1; transform:translateY(0); transition:.8s;}
     .project-card h3 {color:var(--accent);}
-    .project-card a {color:var(--accent); text-decoration:none;}
-    .project-card a:hover {text-decoration:underline;}
+    .project-card:hover {box-shadow:0 0 15px var(--accent),0 0 30px var(--accent);}
+
+    /* MODAL */
+    .modal {
+      position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.8); display:none; justify-content:center; align-items:center; z-index:2000;
+    }
+    .modal-content {
+      background:#1a1a1a; padding:25px; border-radius:12px; max-width:600px; color:var(--text);
+      border:2px solid var(--accent); text-align:left; position:relative;
+    }
+    .modal-content h3 {color:var(--accent);}
+    .modal-content a {color:var(--accent);}
+    .close-btn {
+      position:absolute; top:10px; right:15px; cursor:pointer; font-size:24px; color:var(--accent);
+    }
 
     /* CONTACT */
     .contact-container {display:flex; justify-content:center; flex-wrap:wrap; gap:20px;}
@@ -177,27 +189,63 @@
   <section id="projects">
     <h2 class="section-title">My <span>Projects</span></h2>
     <div class="projects-container">
-      <div class="project-card">
+      <div class="project-card" onclick="openModal('modal1')">
         <h3>Playwright Automation Framework</h3>
-        <p>End-to-end UI automation using Playwright with Page Object Model, Allure reports, 
-        integrated into CI/CD pipelines (Azure DevOps, AWS CodeBuild). Published reports 
-        to S3 static site for visibility.</p>
-        <a href="https://github.com/SubhanKhanPathan99/PLA_Automation_Tutorial" target="_blank">View on GitHub</a>
+        <p>CI/CD integrated Playwright test framework with Allure reports.</p>
       </div>
-      <div class="project-card">
+      <div class="project-card" onclick="openModal('modal2')">
         <h3>Automation Framework</h3>
-        <p>Built scalable Selenium, Cypress frameworks integrated with CI/CD.</p>
+        <p>Built scalable Selenium & Cypress frameworks integrated with pipelines.</p>
       </div>
-      <div class="project-card">
+      <div class="project-card" onclick="openModal('modal3')">
         <h3>API Testing Suite</h3>
         <p>Validated financial workflows with Postman & REST Assured.</p>
       </div>
-      <div class="project-card">
+      <div class="project-card" onclick="openModal('modal4')">
         <h3>Performance Testing</h3>
-        <p>Simulated traffic with JMeter & LoadRunner to ensure scalability.</p>
+        <p>Simulated load using JMeter & LoadRunner.</p>
       </div>
     </div>
   </section>
+
+  <!-- PROJECT MODALS -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+      <h3>Playwright Automation Framework</h3>
+      <p>End-to-end UI automation using Playwright with Page Object Model, Allure reports, 
+      integrated into CI/CD pipelines (Azure DevOps, AWS CodeBuild). Published reports 
+      to S3 static site for visibility.</p>
+      <a href="https://github.com/SubhanKhanPathan99/PLA_Automation_Tutorial" target="_blank">View on GitHub</a>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
+      <h3>Automation Framework</h3>
+      <p>Built scalable automation framework combining Selenium WebDriver and Cypress. 
+      Configured with Jenkins & GitHub Actions for nightly regression runs.</p>
+    </div>
+  </div>
+
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
+      <h3>API Testing Suite</h3>
+      <p>Validated critical financial transactions using Postman, SOAP UI, and REST Assured.
+      Ensured data accuracy across loan servicing, repayment workflows, and catalog modules.</p>
+    </div>
+  </div>
+
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('modal4')">&times;</span>
+      <h3>Performance Testing</h3>
+      <p>Simulated 150+ concurrent users with Apache JMeter & LoadRunner to analyze checkout,
+      payments, and catalog workflows for scalability and performance tuning.</p>
+    </div>
+  </div>
 
   <!-- SKILLS -->
   <section id="skills">
@@ -207,7 +255,8 @@
       <div class="skill">SQL</div><div class="skill">Selenium</div><div class="skill">Cypress</div>
       <div class="skill">Playwright</div><div class="skill">JUnit</div><div class="skill">TestNG</div>
       <div class="skill">Jenkins</div><div class="skill">GitHub Actions</div><div class="skill">Azure DevOps</div>
-      <div class="skill">JMeter</div><div class="skill">Postman</div><div class="skill">Docker</div>
+      <div class="skill">AWS Cloud</div><div class="skill">CircleCI</div><div class="skill">JMeter</div>
+      <div class="skill">Postman</div><div class="skill">Docker</div><div class="skill">Git</div>
     </div>
   </section>
 
@@ -263,6 +312,15 @@
       });
     },{threshold:0.2});
     items.forEach(item=>observer.observe(item));
+
+    // MODAL
+    function openModal(id){ document.getElementById(id).style.display="flex"; }
+    function closeModal(id){ document.getElementById(id).style.display="none"; }
+    window.onclick = function(e){
+      document.querySelectorAll('.modal').forEach(m=>{
+        if(e.target==m){ m.style.display="none"; }
+      });
+    }
   </script>
 </body>
 </html>
