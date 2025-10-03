@@ -9,134 +9,106 @@
     :root {
       --bg: #111;
       --text: #fff;
-      --accent: #00ff66; /* neon green */
+      --accent: #00ff66;
     }
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
-    body { background: var(--bg); color: var(--text); line-height:1.6; }
-
+    * {margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
+    body {background:var(--bg); color:var(--text);}
+    
     /* NAVBAR */
     nav {
-      position:fixed; top:0; left:0; width:100%;
-      background:#000; padding:20px 10%;
-      display:flex; justify-content:space-between; align-items:center;
+      position:fixed; top:0; left:0; width:100%; background:#000;
+      padding:20px 10%; display:flex; justify-content:space-between; align-items:center;
       z-index:1000;
     }
-    nav .logo { font-weight:700; font-size:22px; }
-    nav ul { list-style:none; display:flex; gap:30px; }
-    nav ul li a {
-      color:var(--text); text-decoration:none; font-weight:500;
-      transition:0.3s;
-    }
-    nav ul li a:hover, nav ul li a.active { color:var(--accent); }
-
+    nav .logo { font-weight:700; font-size:22px; color:var(--text); }
+    nav ul {list-style:none; display:flex; gap:30px;}
+    nav ul li a {color:var(--text); text-decoration:none; transition:.3s;}
+    nav ul li a:hover, nav ul li a.active {color:var(--accent);}
+    
     /* HOME */
     .home {
-      height:100vh;
-      display:flex; align-items:center; justify-content:space-between;
-      gap:60px; padding:0 10%; padding-top:80px;
+      height:100vh; display:flex; align-items:center; justify-content:space-between;
+      padding:0 10%; gap:60px;
     }
     .home-info { flex:1; }
     .home-info h1 { font-size:48px; margin-bottom:10px; }
     .home-info h3 { font-size:26px; margin:10px 0; }
     .highlight { color:var(--accent); }
     .btn {
-      display:inline-block; padding:10px 25px; background:var(--accent);
-      color:#000; border-radius:6px; font-weight:600; margin-top:15px;
-      box-shadow:0 0 10px var(--accent),0 0 20px var(--accent);
-      transition:0.3s;
+      display:inline-block; padding:12px 25px; background:var(--accent); color:#000; border-radius:6px;
+      margin-top:15px; font-weight:600; box-shadow:0 0 15px var(--accent),0 0 30px var(--accent); transition:.3s;
     }
-    .btn:hover { background:#000; color:var(--accent); box-shadow:0 0 15px var(--accent),0 0 30px var(--accent); }
-
-    .home-img {
-      position:relative; width:300px; height:300px; border-radius:50%;
-      flex-shrink:0; overflow:hidden;
-      display:flex; justify-content:center; align-items:center;
+    .btn:hover {background:#000; color:var(--accent);}
+    
+    .home-img {width:300px; height:300px; border-radius:50%; overflow:hidden; flex-shrink:0;}
+    .home-img img {width:100%; height:100%; object-fit:cover; border-radius:50%; border:3px solid var(--accent);}
+    
+    /* ROLE ANIMATION */
+    .role {
+      height:28px; overflow:hidden;
     }
-    .home-img img {
-      width:100%; height:100%; object-fit:cover; border-radius:50%;
-      border:3px solid var(--accent);
+    .role span {
+      display:block; color:var(--accent); animation:slide 12s infinite;
     }
-    /* glowing rotating rings */
-    .home-img::before, .home-img::after {
-      content:''; position:absolute; top:50%; left:50%;
-      width:100%; height:100%; border-radius:50%;
-      border:3px solid transparent;
+    @keyframes slide {
+      0%,20% {transform:translateY(0);}
+      25%,45% {transform:translateY(-28px);}
+      50%,70% {transform:translateY(-56px);}
+      75%,95% {transform:translateY(-84px);}
+      100% {transform:translateY(0);}
     }
-    .home-img::before {
-      border-top-color:var(--accent); border-right-color:var(--accent);
-      transform:translate(-50%,-50%) rotate(0deg);
-      animation:spin 8s linear infinite;
-    }
-    .home-img::after {
-      border-bottom-color:var(--accent); border-left-color:var(--accent);
-      transform:translate(-50%,-50%) rotate(0deg);
-      animation:spin 8s linear infinite reverse;
-    }
-    @keyframes spin {
-      from { transform:translate(-50%,-50%) rotate(0deg);}
-      to { transform:translate(-50%,-50%) rotate(360deg);}
-    }
-
+    
     /* SECTION TITLES */
-    section { padding:100px 10% 60px; }
-    .section-title { text-align:center; font-size:36px; margin-bottom:50px; }
-    .section-title span { color:var(--accent); }
-
+    section {padding:100px 10% 60px;}
+    .section-title {text-align:center; font-size:36px; margin-bottom:50px;}
+    .section-title span {color:var(--accent);}
+    
     /* EXPERIENCE */
     .timeline-item {
-      background:#1a1a1a; border:2px solid var(--accent);
-      border-radius:12px; padding:20px; margin-bottom:25px;
-      transition:0.3s;
+      background:#1a1a1a; border:2px solid var(--accent); border-radius:12px;
+      padding:20px; margin-bottom:25px; transition:.3s; opacity:0; transform:translateY(30px);
     }
-    .timeline-item:hover {
-      box-shadow:0 0 15px var(--accent),0 0 30px var(--accent);
-      transform:translateY(-5px);
-    }
-    .timeline-item h3 { font-size:20px; margin-bottom:8px; color:var(--accent); }
-    .timeline-item .date { font-size:14px; color:#aaa; margin-bottom:10px; }
-    .timeline-item ul { margin-left:18px; }
-
+    .timeline-item.show {opacity:1; transform:translateY(0); transition:.8s;}
+    .timeline-item:hover {box-shadow:0 0 15px var(--accent),0 0 30px var(--accent); transform:translateY(-5px);}
+    .timeline-item h3 {color:var(--accent);}
+    .timeline-item .date {font-size:14px; color:#aaa; margin-bottom:10px;}
+    
     /* SKILLS */
-    .skills-container {
-      display:flex; flex-wrap:wrap; gap:15px; justify-content:center;
-    }
+    .skills-container {display:flex; flex-wrap:wrap; gap:15px; justify-content:center;}
     .skill {
-      padding:10px 18px; border:2px solid var(--accent);
-      border-radius:20px; transition:0.3s;
+      padding:10px 18px; border:2px solid var(--accent); border-radius:20px; transition:.3s;
+      opacity:0; transform:scale(0.8);
     }
-    .skill:hover {
-      background:var(--accent); color:#000;
-      box-shadow:0 0 12px var(--accent),0 0 25px var(--accent);
+    .skill.show {opacity:1; transform:scale(1); transition:.5s;}
+    .skill:hover {background:var(--accent); color:#000; box-shadow:0 0 12px var(--accent),0 0 25px var(--accent);}
+    
+    /* PROJECTS */
+    .projects-container {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px;}
+    .project-card {
+      background:#1a1a1a; padding:20px; border:2px solid var(--accent); border-radius:12px; transition:.3s;
+      opacity:0; transform:translateY(30px);
     }
-
+    .project-card.show {opacity:1; transform:translateY(0); transition:.8s;}
+    .project-card h3 {color:var(--accent);}
+    .project-card a {color:var(--accent); text-decoration:none;}
+    .project-card a:hover {text-decoration:underline;}
+    
     /* CONTACT */
-    .contact-container {
-      display:flex; justify-content:center; flex-wrap:wrap; gap:20px;
-    }
+    .contact-container {display:flex; justify-content:center; flex-wrap:wrap; gap:20px;}
     .contact-item {
-      padding:12px 20px; border:2px solid var(--accent);
-      border-radius:30px; display:flex; align-items:center; gap:10px;
-      transition:0.3s;
+      padding:12px 20px; border:2px solid var(--accent); border-radius:30px;
+      display:flex; align-items:center; gap:10px; transition:.3s;
+      color:var(--text); text-decoration:none; /* FIXED: visible text */
     }
-    .contact-item:hover {
-      background:var(--accent); color:#000;
-      box-shadow:0 0 15px var(--accent),0 0 30px var(--accent);
-    }
-
-    /* FOOTER */
-    footer { text-align:center; padding:25px; background:#000; color:#aaa; margin-top:50px; }
-
-    /* SCROLL BUTTON */
+    .contact-item:hover {background:var(--accent); color:#000; box-shadow:0 0 15px var(--accent),0 0 30px var(--accent);}
+    
+    footer {text-align:center; padding:25px; background:#000; color:#aaa;}
+    
     .scroll-up {
-      position:fixed; bottom:20px; right:20px;
-      width:45px; height:45px; border-radius:50%;
-      background:var(--accent); color:#000;
-      display:flex; justify-content:center; align-items:center;
-      cursor:pointer; font-size:24px;
-      box-shadow:0 0 10px var(--accent);
-      transition:0.3s;
+      position:fixed; bottom:20px; right:20px; width:45px; height:45px; border-radius:50%;
+      background:var(--accent); color:#000; display:flex; justify-content:center; align-items:center;
+      cursor:pointer; font-size:24px; box-shadow:0 0 10px var(--accent);
     }
-    .scroll-up:hover { transform:scale(1.1); }
   </style>
 </head>
 <body>
@@ -146,6 +118,7 @@
     <ul>
       <li><a href="#home" class="active">Home</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -155,7 +128,12 @@
   <section id="home" class="home">
     <div class="home-info">
       <h1>Subhan Khan Pathan</h1>
-      <h3>I'm a <span class="highlight">QA Automation Engineer</span></h3>
+      <h3 class="role">
+        <span>QA Automation Engineer</span>
+        <span>Test Automation Specialist</span>
+        <span>Selenium/Cypress Expert</span>
+        <span>Automation Framework Developer</span>
+      </h3>
       <p>Senior QA Automation Engineer with 6+ years of experience delivering high-quality software solutions across finance, insurance, retail, and e-commerce industries.</p>
       <a href="Resume.pdf" target="_blank" class="btn">View Resume</a>
     </div>
@@ -170,40 +148,44 @@
     <div class="timeline-item">
       <h3>Answer Financial | Senior QA Tester</h3>
       <p class="date">Sep 2024 – Present</p>
-      <ul>
-        <li>Architected automation frameworks (Selenium, Cypress, Playwright) reducing regression by 45%.</li>
-        <li>API validation with Postman, Swagger, SOAP UI for loan workflows.</li>
-        <li>Database testing with SQL & MongoDB ensuring transaction consistency.</li>
-        <li>Integrated QA into CI/CD pipelines with Jenkins, GitHub Actions, Azure DevOps.</li>
-        <li>Coordinated UAT with stakeholders reducing production defects by 30%.</li>
-      </ul>
+      <p>Automation frameworks, API validation, DB testing, CI/CD integration, UAT coordination.</p>
     </div>
     <div class="timeline-item">
       <h3>MetLife | Senior QA Tester</h3>
       <p class="date">Jun 2020 – Oct 2022</p>
-      <ul>
-        <li>Automated regression suites with Selenium, Cypress BDD reducing execution time from 3 days → 12 hrs.</li>
-        <li>Performance testing with JMeter simulating 150+ users on checkout APIs.</li>
-        <li>Cross-browser and mobile testing with BrowserStack & LambdaTest.</li>
-        <li>Integrated automation into CI/CD pipelines with Jenkins, GitHub, Docker.</li>
-      </ul>
+      <p>Regression automation, performance testing, cross-browser/mobile testing, CI/CD pipelines.</p>
     </div>
     <div class="timeline-item">
       <h3>Mphasis | QA Engineer</h3>
       <p class="date">Jun 2018 – Jun 2020</p>
-      <ul>
-        <li>Automated regression suites using Selenium and Jenkins.</li>
-        <li>Executed SQL queries for backend validation and ETL testing.</li>
-        <li>Conducted cross-platform testing via BrowserStack ensuring compatibility.</li>
-      </ul>
+      <p>Selenium automation, SQL backend validation, cross-platform testing.</p>
     </div>
     <div class="timeline-item">
       <h3>QA Intern</h3>
       <p class="date">Jun 2017 – May 2018</p>
-      <ul>
-        <li>Assisted in monitoring, analysis, and documenting recurring IT issues.</li>
-        <li>Created test cases, executed validations, and logged defects.</li>
-      </ul>
+      <p>Assisted in test cases, defect logging, and issue analysis.</p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title">My <span>Projects</span></h2>
+    <div class="projects-container">
+      <div class="project-card">
+        <h3>Automation Framework</h3>
+        <p>Built scalable automation frameworks in Selenium, Cypress, and Playwright integrated with CI/CD.</p>
+        <a href="https://github.com/SubhanKhanPathan99" target="_blank">View on GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>API Testing Suite</h3>
+        <p>Comprehensive Postman and REST Assured collections validating finance workflows.</p>
+        <a href="https://github.com/SubhanKhanPathan99" target="_blank">View on GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Performance Testing</h3>
+        <p>Simulated high traffic with JMeter and LoadRunner to optimize e-commerce applications.</p>
+        <a href="https://github.com/SubhanKhanPathan99" target="_blank">View on GitHub</a>
+      </div>
     </div>
   </section>
 
@@ -211,26 +193,13 @@
   <section id="skills">
     <h2 class="section-title">My <span>Skills</span></h2>
     <div class="skills-container">
-      <div class="skill">Java</div>
-      <div class="skill">Python</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">SQL</div>
-      <div class="skill">Selenium WebDriver</div>
-      <div class="skill">Cypress</div>
-      <div class="skill">Playwright</div>
-      <div class="skill">JUnit</div>
-      <div class="skill">TestNG</div>
-      <div class="skill">Jenkins</div>
-      <div class="skill">GitHub Actions</div>
-      <div class="skill">Maven</div>
-      <div class="skill">Gradle</div>
-      <div class="skill">Azure DevOps</div>
-      <div class="skill">JMeter</div>
-      <div class="skill">Postman</div>
-      <div class="skill">REST Assured</div>
-      <div class="skill">AWS</div>
-      <div class="skill">Docker</div>
-      <div class="skill">Git</div>
+      <div class="skill">Java</div><div class="skill">Python</div><div class="skill">JavaScript</div>
+      <div class="skill">SQL</div><div class="skill">Selenium WebDriver</div><div class="skill">Cypress</div>
+      <div class="skill">Playwright</div><div class="skill">JUnit</div><div class="skill">TestNG</div>
+      <div class="skill">Jenkins</div><div class="skill">GitHub Actions</div><div class="skill">Maven</div>
+      <div class="skill">Gradle</div><div class="skill">Azure DevOps</div><div class="skill">JMeter</div>
+      <div class="skill">Postman</div><div class="skill">REST Assured</div><div class="skill">AWS</div>
+      <div class="skill">Docker</div><div class="skill">Git</div>
     </div>
   </section>
 
@@ -250,9 +219,22 @@
     <p>© 2025 Subhan Khan Pathan. All Rights Reserved.</p>
   </footer>
 
-  <!-- SCROLL UP BTN -->
-  <div class="scroll-up" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+  <!-- SCROLL UP -->
+  <div class="scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})">
     <i class='bx bx-chevron-up'></i>
   </div>
+
+  <!-- SCROLL ANIMATION JS -->
+  <script>
+    const items = document.querySelectorAll('.timeline-item, .project-card, .skill');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, {threshold: 0.2});
+    items.forEach(item => observer.observe(item));
+  </script>
 </body>
 </html>
