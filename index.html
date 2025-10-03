@@ -44,7 +44,7 @@
     .section-title { text-align: center; font-size: 40px; margin-bottom: 50px; }
     .section-title span { color: var(--accent-color); }
 
-    /* Home with image + animation */
+    /* Home */
     .home { display: flex; align-items: center; justify-content: space-between; min-height: 100vh; gap: 50px; }
     .home-info { max-width: 600px; }
     .home-info h1 { font-size: 52px; font-weight: 700; }
@@ -82,50 +82,44 @@
       100% { transform: translate(-50%,-50%) rotate(360deg); } 
     }
 
-    /* Projects & Experience */
+    /* Cards */
     .card-container { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 25px; }
-    .card { background: var(--bg-color); border: 2px solid var(--accent-color); border-radius: 10px; padding: 20px; transition: 0.3s; }
+    .card { background: var(--secondary-bg); border: 2px solid var(--accent-color); border-radius: 10px; padding: 20px; transition: 0.3s; }
     .card:hover { transform: translateY(-6px); box-shadow: 0 0 15px rgba(0,255,0,0.4); }
     .card h3 { color: var(--accent-color); margin-bottom: 8px; }
     .card h4 { margin-bottom: 8px; }
 
+    /* Skills */
+    .skills-list { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+    .skill-item {
+      padding: 10px 20px; border: 2px solid var(--accent-color);
+      border-radius: 30px; background: var(--bg-color);
+      transition: 0.3s;
+    }
+    .skill-item:hover { background: var(--accent-color); color: #111; }
+
     /* Contact */
-    .contact { text-align: center; background: #fff; color: #111; }
+    .contact { text-align: center; background: var(--bg-color); color: var(--text-color); }
     .contact h2 { font-size: 40px; margin-bottom: 10px; }
-    .contact p { color: #555; margin-bottom: 25px; }
+    .contact p { color: #aaa; margin-bottom: 25px; }
     .contact-box { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
     .contact-item {
       display: flex; align-items: center; gap: 10px;
-      background: #f5f5f5; padding: 15px 25px;
-      border-radius: 40px; border: 1px solid #ccc;
-      font-size: 16px; color: #111;
+      background: var(--secondary-bg); padding: 15px 25px;
+      border-radius: 40px; border: 1px solid var(--accent-color);
+      font-size: 16px; color: var(--text-color);
       opacity: 0; transform: translateY(30px);
       transition: all 0.6s ease;
     }
-    .contact-item a { color: #111; text-decoration: none; }
+    .contact-item a { color: var(--text-color); text-decoration: none; }
 
-    /* Show on scroll */
-    .contact-item.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .contact-item.show { opacity: 1; transform: translateY(0); }
 
-    /* Glow + Bounce in dark mode */
     body:not(.light-mode) .contact-item:hover {
       background: var(--accent-color);
       color: #111;
       box-shadow: 0 0 15px var(--accent-color), 0 0 25px var(--accent-color);
       transform: scale(1.08);
-      animation: bounce 0.4s ease;
-    }
-    body:not(.light-mode) .contact-item:hover a {
-      color: #111;
-    }
-
-    @keyframes bounce {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.12); }
-      100% { transform: scale(1.08); }
     }
 
     footer { text-align: center; padding: 20px; background: #0c0c0c; color: #aaa; }
@@ -140,6 +134,7 @@
       <li><a href="#home" class="active">Home</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
       <i class='bx bx-moon' id="modeToggle"></i>
     </ul>
@@ -164,8 +159,21 @@
   <section id="projects" class="projects">
     <h2 class="section-title">My Recent <span>Projects</span></h2>
     <div class="card-container">
-      <div class="card"><h3>Selenium Automation Framework</h3><p>Framework with Selenium & Java for finance apps.</p></div>
-      <div class="card"><h3>Cypress E-Commerce Testing</h3><p>E2E tests validating checkout flows.</p></div>
+      <div class="card">
+        <h3>Selenium Automation Framework</h3>
+        <p>Architected scalable automation framework using Selenium & Java with POM, TestNG, and Maven.</p>
+        <a href="https://github.com/your-username/selenium-framework" target="_blank">View Project</a>
+      </div>
+      <div class="card">
+        <h3>Cypress E-Commerce Testing</h3>
+        <p>Developed Cypress BDD tests for shopping cart, checkout, and payment modules.</p>
+        <a href="https://github.com/your-username/cypress-ecommerce" target="_blank">View Project</a>
+      </div>
+      <div class="card">
+        <h3>API Performance Testing</h3>
+        <p>Conducted load and stress testing of REST APIs using JMeter and Postman to optimize scalability.</p>
+        <a href="https://github.com/your-username/api-performance" target="_blank">View Project</a>
+      </div>
     </div>
   </section>
 
@@ -173,20 +181,54 @@
   <section id="experience" class="experience">
     <h2 class="section-title">My <span>Experience</span></h2>
     <div class="card-container">
-      <div class="card"><h3>Answer Financial</h3><h4>Senior QA Tester</h4><p>Built frameworks, cut regression cycle by 45%.</p></div>
-      <div class="card"><h3>MetLife</h3><h4>Senior QA Tester</h4><p>Automated suite, reduced execution from 3 days to 12 hrs.</p></div>
+      <div class="card"><h3>Answer Financial</h3><h4>Senior QA Tester | Sep 2024 – Present</h4><p>Architected and implemented Selenium, Cypress, and Playwright frameworks reducing manual regression by 45%. Validated APIs with Postman & Swagger. Integrated CI/CD pipelines with Jenkins, GitHub Actions, Azure DevOps. Delivered reports in Jira, TestRail, qTest reducing production defects by 30%.</p></div>
+      <div class="card"><h3>MetLife</h3><h4>Senior QA Tester | Jun 2020 – Oct 2022</h4><p>Automated regression suites (Selenium, Cypress BDD, TestNG) reducing execution from 3 days to 12 hrs. Performed JMeter load tests simulating 150 users. Conducted cross-browser testing (LambdaTest/BrowserStack). Validated APIs via Postman & SOAP UI. Integrated automation into CI/CD pipelines with Jenkins, Docker, LambdaTest.</p></div>
+      <div class="card"><h3>Mphasis</h3><h4>QA Engineer | Jun 2018 – Jun 2020</h4><p>Designed regression suites with Selenium & Jenkins, streamlined CI/CD. Performed integration and functional testing across enterprise apps. Developed SQL queries for backend validation, ETL, and data integrity. Conducted cross-platform testing using BrowserStack. Active Agile participant improving test coverage.</p></div>
+      <div class="card"><h3>QA Intern</h3><h4>Jun 2017 – May 2018</h4><p>Assisted with application monitoring, created test cases, logged defects, and supported QA documentation. Leveraged SQL, Excel, and ServiceNow for reporting and defect tracking.</p></div>
     </div>
   </section>
 
-  <!-- Contact styled like your pic -->
+  <!-- Skills -->
+  <section id="skills" class="skills">
+    <h2 class="section-title">My <span>Skills</span></h2>
+    <div class="skills-list">
+      <div class="skill-item">Java</div>
+      <div class="skill-item">Python</div>
+      <div class="skill-item">JavaScript</div>
+      <div class="skill-item">Selenium WebDriver</div>
+      <div class="skill-item">Cypress</div>
+      <div class="skill-item">Playwright</div>
+      <div class="skill-item">TestNG</div>
+      <div class="skill-item">Cucumber BDD</div>
+      <div class="skill-item">Mocha / Chai</div>
+      <div class="skill-item">Postman / API Testing</div>
+      <div class="skill-item">SOAP UI</div>
+      <div class="skill-item">Swagger</div>
+      <div class="skill-item">Apache JMeter</div>
+      <div class="skill-item">LoadRunner</div>
+      <div class="skill-item">MySQL</div>
+      <div class="skill-item">MongoDB</div>
+      <div class="skill-item">Jenkins</div>
+      <div class="skill-item">GitHub / Git</div>
+      <div class="skill-item">Docker</div>
+      <div class="skill-item">AWS</div>
+      <div class="skill-item">Azure DevOps</div>
+      <div class="skill-item">qTest / Zephyr / TestRail</div>
+      <div class="skill-item">Agile Scrum</div>
+      <div class="skill-item">SDLC</div>
+    </div>
+  </section>
+
+  <!-- Contact -->
   <section id="contact" class="contact">
     <p>Get in Touch</p>
     <h2>Contact Me</h2>
     <div class="contact-box">
-      <div class="contact-item" style="transition-delay: 0.1s"><i class='bx bx-phone'></i><a href="tel:+13169259995">+1 (316) 925-9995</a></div>
-      <div class="contact-item" style="transition-delay: 0.2s"><i class='bx bx-envelope'></i><a href="mailto:subhankhanpathan99@gmail.com">subhankhanpathan99@gmail.com</a></div>
-      <div class="contact-item" style="transition-delay: 0.3s"><i class='bx bxl-linkedin'></i><a href="https://www.linkedin.com/in/pathan-subhan-khan-256547147" target="_blank">LinkedIn</a></div>
-      <div class="contact-item" style="transition-delay: 0.4s"><i class='bx bxl-github'></i><a href="https://github.com/SubhanKhanPathan99" target="_blank">GitHub</a></div>
+      <div class="contact-item"><i class='bx bx-phone'></i><a href="tel:+13169259995">+1 (316) 925-9995</a></div>
+      <div class="contact-item"><i class='bx bx-envelope'></i><a href="mailto:subhankhanpathan99@gmail.com">subhankhanpathan99@gmail.com</a></div>
+      <div class="contact-item"><i class='bx bxl-linkedin'></i><a href="https://www.linkedin.com/in/pathan-subhan-khan-256547147" target="_blank">LinkedIn</a></div>
+      <div class="contact-item"><i class='bx bxl-github'></i><a href="https://github.com/SubhanKhanPathan99" target="_blank">GitHub</a></div>
+      <div class="contact-item"><i class='bx bx-file'></i><a href="resume.pdf" download>Download Resume</a></div>
     </div>
   </section>
 
@@ -212,9 +254,9 @@
     });
   </script>
 
-  <!-- Scroll animation for contact items -->
+  <!-- Scroll animation -->
   <script>
-    const contactItems = document.querySelectorAll('.contact-item');
+    const items = document.querySelectorAll('.contact-item, .card, .skill-item');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -223,7 +265,7 @@
         }
       });
     }, { threshold: 0.2 });
-    contactItems.forEach(item => observer.observe(item));
+    items.forEach(item => observer.observe(item));
   </script>
 </body>
 </html>
