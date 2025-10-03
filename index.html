@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Subhan Khan Pathan | Portfolio</title>
   <style>
-    /* Reset */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -26,9 +25,7 @@
       align-items: center;
       z-index: 1000;
     }
-
     header h2 { font-size: 20px; }
-
     nav ul {
       list-style: none;
       display: flex;
@@ -44,13 +41,9 @@
     nav ul li a.active { color: #00ff88; }
 
     /* Sections */
-    section {
-      padding: 80px 50px;
-      min-height: auto;
-      text-align: center;
-    }
+    section { padding: 80px 50px; text-align: center; }
 
-    /* Home Section */
+    /* Home */
     #home {
       min-height: 100vh;
       display: flex;
@@ -58,28 +51,32 @@
       align-items: center;
       position: relative;
     }
-
     .home-content {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 60px;
       flex-wrap: wrap;
-      text-align: left;
       z-index: 2;
     }
-
-    .home-text h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
+    .home-img img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #00ff88;
     }
+    .home-text {
+      max-width: 500px;
+      text-align: left;
+    }
+    .home-text h1 { font-size: 42px; margin-bottom: 10px; }
     .role {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: bold;
       color: #00ff88;
       margin-bottom: 15px;
-      height: 30px;
-      overflow: hidden;
+      height: 28px;
     }
     .home-text p {
       font-size: 16px;
@@ -95,22 +92,12 @@
       font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
+      text-decoration: none;
     }
     .btn:hover { background: #00cc66; }
 
-    .home-img img {
-      width: 220px;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid #00ff88;
-    }
-
-    /* Experience Section */
-    #experience h2 {
-      font-size: 32px;
-      margin-bottom: 40px;
-    }
+    /* Experience */
+    #experience h2 { font-size: 32px; margin-bottom: 40px; }
     .exp-container {
       display: flex;
       justify-content: center;
@@ -125,13 +112,54 @@
       text-align: left;
       transition: 0.3s;
     }
-    .exp-card:hover { background: #002b1f; }
+    .exp-card:hover { background: #002b1f; transform: translateY(-5px); }
 
-    /* Projects */
-    #projects h2 {
-      font-size: 32px;
-      margin-bottom: 40px;
+    /* Skills */
+    #skills h2 { margin-bottom: 30px; }
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
     }
+    .skill {
+      padding: 10px 20px;
+      border: 2px solid #00ff88;
+      border-radius: 25px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .skill:hover {
+      background: #00ff88;
+      color: #000;
+      box-shadow: 0 0 15px #00ff88, 0 0 30px #00ff88;
+      transform: scale(1.1) rotate(-3deg);
+    }
+
+    /* Contact */
+    #contact h2 { margin-bottom: 30px; }
+    .contact-container {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    .contact-item {
+      padding: 12px 20px;
+      border: 2px solid #00ff88;
+      border-radius: 25px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .contact-item:hover {
+      background: #00ff88;
+      color: #000;
+      box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88;
+      transform: scale(1.05);
+    }
+
+    /* Projects Flip Cards */
+    #projects h2 { font-size: 32px; margin-bottom: 40px; }
     .projects-container {
       display: flex;
       flex-wrap: wrap;
@@ -151,9 +179,7 @@
       transition: transform 0.8s;
       transform-style: preserve-3d;
     }
-    .project-card:hover .project-inner {
-      transform: rotateY(180deg);
-    }
+    .project-card:hover .project-inner { transform: rotateY(180deg); }
     .project-front, .project-back {
       position: absolute;
       width: 100%;
@@ -175,60 +201,7 @@
       border-radius: 10px;
       margin-bottom: 15px;
     }
-    .project-front h3 { margin-bottom: 10px; }
-    .project-back {
-      transform: rotateY(180deg);
-    }
-    .project-back a {
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
-      padding: 8px 15px;
-      background: #00ff88;
-      color: #000;
-      border-radius: 20px;
-      font-weight: bold;
-    }
-
-    /* Skills */
-    #skills h2 { margin-bottom: 30px; }
-    .skills-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-    }
-    .skill {
-      padding: 10px 20px;
-      border: 2px solid #00ff88;
-      border-radius: 25px;
-      transition: 0.3s;
-    }
-    .skill:hover {
-      background: #00ff88;
-      color: #000;
-      transform: scale(1.1);
-    }
-
-    /* Contact */
-    #contact h2 { margin-bottom: 30px; }
-    .contact-container {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-    .contact-item {
-      padding: 12px 20px;
-      border: 2px solid #00ff88;
-      border-radius: 25px;
-      transition: 0.3s;
-    }
-    .contact-item:hover {
-      background: #00ff88;
-      color: #000;
-      box-shadow: 0 0 15px #00ff88;
-    }
+    .project-back { transform: rotateY(180deg); }
 
     /* Background Animation */
     #particles-js {
@@ -258,14 +231,14 @@
   <section id="home">
     <div id="particles-js"></div>
     <div class="home-content">
+      <div class="home-img">
+        <img src="Image.png" alt="Profile">
+      </div>
       <div class="home-text">
         <h1>Subhan Khan Pathan</h1>
         <div class="role" id="role"></div>
         <p>Senior QA Automation Engineer with 6+ years of experience delivering high-quality software solutions across finance, insurance, retail, and e-commerce. Skilled in test automation, CI/CD, cloud, and cross-browser testing.</p>
         <a href="Resume.pdf" class="btn" target="_blank">View Resume</a>
-      </div>
-      <div class="home-img">
-        <img src="Image.png" alt="Profile">
       </div>
     </div>
   </section>
@@ -276,26 +249,29 @@
     <div class="exp-container">
       <div class="exp-card">
         <h3>Answer Financial</h3>
-        <p>Senior QA Tester<br>Sep 2024 – Present</p>
+        <p><b>Senior QA Tester</b><br>Sep 2024 – Present</p>
         <ul>
           <li>Architected automation frameworks (Selenium, Cypress, Playwright).</li>
           <li>Performed API validation with Postman & RestAssured.</li>
+          <li>Enhanced CI/CD pipelines for faster releases.</li>
         </ul>
       </div>
       <div class="exp-card">
         <h3>MetLife</h3>
-        <p>Senior QA Tester<br>Jun 2020 – Oct 2022</p>
+        <p><b>Senior QA Tester</b><br>Jun 2020 – Oct 2022</p>
         <ul>
           <li>Automated regression with Selenium, Cypress BDD.</li>
-          <li>Integrated with CI/CD pipelines (Jenkins, Azure DevOps).</li>
+          <li>Integrated with Jenkins, Azure DevOps.</li>
+          <li>Reduced defects by 25% with robust validation.</li>
         </ul>
       </div>
       <div class="exp-card">
         <h3>Mphasis</h3>
-        <p>QA Engineer<br>Jun 2018 – Jun 2020</p>
+        <p><b>QA Engineer</b><br>Jun 2018 – Jun 2020</p>
         <ul>
           <li>Automated regression & smoke testing (Selenium, Jenkins).</li>
           <li>Executed SQL queries for backend validation.</li>
+          <li>Optimized test execution time by 20%.</li>
         </ul>
       </div>
     </div>
@@ -318,7 +294,6 @@
           </div>
         </div>
       </div>
-
       <div class="project-card">
         <div class="project-inner">
           <div class="project-front">
@@ -371,7 +346,6 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script>
-    /* Particles background */
     particlesJS("particles-js", {
       "particles": {
         "number": { "value": 80 },
@@ -382,7 +356,6 @@
       }
     });
 
-    /* Role typing animation */
     const roles = ["QA Automation Engineer", "Playwright Expert", "Selenium/Cypress Specialist", "CI/CD Engineer", "Cloud Tester"];
     let roleIndex = 0, charIndex = 0;
     const roleElement = document.getElementById("role");
@@ -396,7 +369,6 @@
         setTimeout(eraseRole, 1500);
       }
     }
-
     function eraseRole() {
       if (charIndex > 0) {
         roleElement.textContent = roles[roleIndex].substring(0, charIndex - 1);
