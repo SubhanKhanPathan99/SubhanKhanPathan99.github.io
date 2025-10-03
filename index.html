@@ -10,185 +10,318 @@
     :root {
       --accent-color: #00ff00;
       --bg-color: #111;
-      --secondary-bg: #1a1a1a;
+      --secondary-bg: #1c1c1c;
       --text-color: #ededed;
     }
 
-    [data-theme="light"] {
-      --bg-color: #fff;
-      --secondary-bg: #f5f5f5;
-      --text-color: #111;
-      --accent-color: #007f00;
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
     }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: var(--bg-color); color: var(--text-color); scroll-behavior: smooth; }
 
     /* Navbar */
     .navbar {
-      position: fixed; top: 0; left: 0; width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #000;
       padding: 20px 9%;
-      display: flex; justify-content: space-between; align-items: center;
-      background: var(--secondary-bg); z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
     }
-    .logo { font-size: 24px; font-weight: 700; color: var(--text-color); }
-    .navlist { display: flex; gap: 30px; }
-    .navlist a { color: var(--text-color); transition: 0.3s; }
-    .navlist a:hover, .navlist a.active { color: var(--accent-color); }
-    .toggle-theme { cursor: pointer; font-size: 22px; color: var(--accent-color); }
 
-    /* Home */
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+
+    .navlist {
+      list-style: none;
+      display: flex;
+    }
+
+    .navlist li {
+      margin-left: 25px;
+    }
+
+    .navlist a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .navlist a:hover, .navlist a.active {
+      color: var(--accent-color);
+    }
+
+    /* Home Section */
     .home {
-      display: flex; justify-content: space-between; align-items: center;
-      min-height: 100vh; padding: 80px 9% 0; gap: 50px; position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding: 120px 9% 60px;
     }
-    .home-info h1 { font-size: 50px; }
-    .home-info h3 { font-size: 28px; margin: 10px 0; }
-    .home-info h3 span { color: var(--accent-color); }
-    .home-info p { margin: 20px 0 30px; line-height: 1.6; }
+
+    .home-info h1 {
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+
+    .home-info h3 {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .home-info h3 span {
+      color: var(--accent-color);
+    }
+
+    .home-info p {
+      margin-bottom: 20px;
+    }
+
     .btn {
-      display: inline-block; padding: 10px 25px;
-      background: var(--accent-color); color: #111; border-radius: 8px;
-      font-weight: 600; transition: 0.3s;
+      display: inline-block;
+      padding: 12px 25px;
+      background: var(--accent-color);
+      color: #111;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
     }
-    .btn:hover { background: transparent; border: 2px solid var(--accent-color); color: var(--accent-color); }
 
-    .home-img { position: relative; width: 320px; height: 320px; }
+    .btn:hover {
+      background: transparent;
+      color: var(--accent-color);
+      box-shadow: 0 0 10px var(--accent-color);
+    }
+
+    /* Profile Image */
+    .home-img {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
     .home-img img {
-      width: 100%; height: 100%;
-      aspect-ratio: 1 / 1; object-fit: cover;
-      border-radius: 50%; border: 3px solid var(--accent-color);
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent-color);
     }
-    .home-img::before, .home-img::after {
-      content: ''; position: absolute; top: 50%; left: 50%;
-      border-radius: 50%; border: 3px solid transparent;
-      transform: translate(-50%, -50%);
-    }
-    .home-img::before {
-      width: 100%; height: 100%;
-      border-top-color: var(--accent-color); border-right-color: var(--accent-color);
-      animation: rotate 8s linear infinite;
-    }
+
+    .home-img::before,
     .home-img::after {
-      width: 120%; height: 120%;
-      border-bottom-color: var(--accent-color); border-left-color: var(--accent-color);
-      animation: rotate 10s linear infinite reverse;
-    }
-    @keyframes rotate { from {transform: translate(-50%, -50%) rotate(0);} to {transform: translate(-50%, -50%) rotate(360deg);} }
-
-    /* Scroll down indicator */
-    .scroll-down {
-      position: absolute; bottom: 20px; left: 50%;
-      transform: translateX(-50%);
-      font-size: 32px; color: var(--accent-color);
-      animation: bounce 1.5s infinite; cursor: pointer;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translate(-50%, 0); }
-      50% { transform: translate(-50%, -12px); }
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 3px solid transparent;
+      border-radius: 50%;
     }
 
-    /* Sections */
-    section { padding: 80px 9%; }
-    .section-title { text-align: center; font-size: 40px; margin-bottom: 40px; }
-    .section-title span { color: var(--accent-color); }
-
-    /* Projects */
-    .project-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .project-card {
-      border: 1.5px solid var(--accent-color); padding: 20px; border-radius: 10px;
-      background: var(--secondary-bg); transition: 0.3s;
+    .home-img::before {
+      width: 100%;
+      height: 100%;
+      border-top-color: var(--accent-color);
+      border-right-color: var(--accent-color);
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation: rotateBorder 10s linear infinite;
     }
-    .project-card:hover { transform: translateY(-5px); box-shadow: 0 0 20px rgba(0,255,0,0.4); }
-    .project-card h3 { margin-bottom: 10px; color: var(--accent-color); }
 
-    /* Experience Timeline */
-    .timeline { position: relative; margin: 50px auto; max-width: 900px; }
-    .timeline::before {
-      content: ''; position: absolute; top: 0; left: 50%;
-      transform: translateX(-50%); width: 2px; height: 100%; background: var(--accent-color);
+    .home-img::after {
+      width: 115%;
+      height: 115%;
+      border-bottom-color: var(--accent-color);
+      border-left-color: var(--accent-color);
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation: rotateBorder 10s linear infinite reverse;
     }
+
+    @keyframes rotateBorder {
+      from { transform: translate(-50%, -50%) rotate(0); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Section Titles */
+    .section-title {
+      text-align: center;
+      font-size: 38px;
+      margin-bottom: 50px;
+    }
+
+    .section-title span {
+      color: var(--accent-color);
+    }
+
+    /* Experience */
+    .timeline {
+      width: 80%;
+      margin: auto;
+    }
+
     .timeline-item {
-      position: relative; width: 50%; padding: 20px; box-sizing: border-box;
-      opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out;
+      background: var(--secondary-bg);
+      border: 2px solid var(--accent-color);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
     }
-    .timeline-item.show { opacity: 1; transform: translateY(0); }
-    .timeline-item:nth-child(odd) { left: 0; text-align: right; }
-    .timeline-item:nth-child(even) { left: 50%; }
-    .timeline-dot {
-      position: absolute; top: 20px; width: 18px; height: 18px;
-      background: var(--accent-color); border-radius: 50%;
-      box-shadow: 0 0 10px rgba(0,255,0,0.8);
+
+    .timeline-item.show {
+      opacity: 1;
+      transform: translateY(0);
     }
-    .timeline-item:nth-child(odd) .timeline-dot { right: -9px; }
-    .timeline-item:nth-child(even) .timeline-dot { left: -9px; }
-    .timeline-content {
-      background: var(--secondary-bg); border: 1px solid var(--accent-color);
-      border-radius: 8px; padding: 15px; display: inline-block; max-width: 90%;
+
+    .timeline-item h3 {
+      margin: 0;
+      font-size: 22px;
+      color: var(--accent-color);
     }
-    .timeline-content h3 { color: var(--accent-color); margin-bottom: 8px; }
-    .timeline-content .date {
-      font-size: 14px; font-style: italic; color: #aaa; margin-bottom: 6px; display: block;
+
+    .timeline-item span {
+      color: #ccc;
+      font-size: 16px;
     }
-    .timeline-content ul { margin-left: 20px; text-align: left; }
+
+    .timeline-item .date {
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+
+    .timeline-item ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .timeline-item li {
+      margin-bottom: 8px;
+    }
+
+    .timeline-item:hover {
+      box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-color);
+      transform: scale(1.02);
+    }
 
     /* Skills */
-    .skills-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px; }
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
     .skill {
-      border: 1.5px solid var(--accent-color); padding: 10px 18px;
-      border-radius: 25px; background: var(--secondary-bg); color: var(--text-color);
-      transition: 0.3s; position: relative; overflow: hidden;
+      background: var(--secondary-bg);
+      border: 1.5px solid var(--accent-color);
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-size: 14px;
+      color: var(--text-color);
+      transition: 0.3s;
+      box-shadow: 0 0 5px rgba(0,255,0,0.4);
     }
-    .skill::after {
-      content: ''; position: absolute; top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
-      transition: 0.5s;
+
+    .skill:hover {
+      background: var(--accent-color);
+      color: #111;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0,255,0,0.8);
     }
-    .skill:hover::after { left: 100%; }
-    .skill:hover { background: var(--accent-color); color: #111; box-shadow: 0 0 20px rgba(0,255,0,0.7); }
 
     /* Contact */
-    .contact { text-align: center; background: var(--secondary-bg); padding: 60px 9%; }
-    .contact-icons { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px; }
-    .contact-icons a {
-      display: flex; align-items: center; gap: 8px;
-      border: 1.5px solid var(--accent-color); padding: 10px 18px;
-      border-radius: 25px; color: var(--text-color); position: relative; overflow: hidden;
+    .contact {
+      text-align: center;
+      padding: 60px 20px;
+      background: #111;
+    }
+
+    .contact h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--secondary-bg);
+      padding: 12px 20px;
+      border-radius: 25px;
+      border: 1.5px solid var(--accent-color);
       transition: 0.3s;
     }
-    .contact-icons a::after {
-      content: ''; position: absolute; top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
-      transition: 0.5s;
+
+    .contact-item:hover {
+      background: var(--accent-color);
+      color: #111;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0,255,0,0.8);
     }
-    .contact-icons a:hover::after { left: 100%; }
-    .contact-icons a:hover { background: var(--accent-color); color: #111; }
 
-    footer { text-align: center; padding: 15px; font-size: 14px; background: var(--bg-color); }
+    /* Scroll Buttons */
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 28px;
+      color: var(--accent-color);
+      cursor: pointer;
+      animation: bounce 2s infinite;
+    }
 
-    /* Scroll-to-top button */
-    .scroll-top {
-      position: fixed; bottom: 25px; right: 25px;
-      background: var(--accent-color); color: #111;
-      width: 45px; height: 45px;
-      border-radius: 50%; display: flex; justify-content: center; align-items: center;
-      font-size: 22px; cursor: pointer;
-      box-shadow: 0 0 15px rgba(0,255,0,0.6);
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 10px); }
+    }
+
+    #scrollTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      font-size: 22px;
+      background: var(--accent-color);
+      color: #111;
+      padding: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
       transition: 0.3s;
-      opacity: 0; visibility: hidden;
-      animation: pulse 2s infinite;
     }
-    .scroll-top.show { opacity: 1; visibility: visible; }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 10px rgba(0,255,0,0.4); }
-      50% { box-shadow: 0 0 25px rgba(0,255,0,1); }
-      100% { box-shadow: 0 0 10px rgba(0,255,0,0.4); }
+
+    #scrollTop.show {
+      opacity: 1;
     }
   </style>
 </head>
 <body>
+
   <!-- Navbar -->
   <nav class="navbar">
     <a href="#" class="logo">Portfolio</a>
@@ -199,7 +332,6 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <i class='bx bx-moon toggle-theme'></i>
   </nav>
 
   <!-- Home -->
@@ -207,80 +339,74 @@
     <div class="home-info">
       <h1>Subhan Khan Pathan</h1>
       <h3>I'm a <span id="job-title">QA Automation Engineer</span></h3>
-      <p>Senior QA Automation Engineer with 6+ years of experience delivering high-quality solutions across finance, insurance, retail, and e-commerce.</p>
+      <p>Senior QA Automation Engineer with 6+ years of experience delivering high-quality software solutions across finance, insurance, retail, and e-commerce.</p>
       <a href="Resume.pdf" target="_blank" class="btn">View Resume</a>
     </div>
     <div class="home-img">
-      <img src="Image.png" alt="Profile">
+      <img src="Image.png" alt="Profile Picture">
     </div>
     <div class="scroll-down"><i class='bx bx-chevron-down'></i></div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects">
-    <h2 class="section-title">My Recent <span>Projects</span></h2>
-    <div class="project-container">
-      <div class="project-card">
-        <h3>Selenium Automation Framework</h3>
-        <p>Framework for finance web apps with POM.</p>
-        <a href="https://github.com/SubhanKhanPathan99/selenium-framework" target="_blank" class="btn">View on GitHub</a>
-      </div>
-      <div class="project-card">
-        <h3>Cypress E-Commerce Testing</h3>
-        <p>E2E automation validating checkout flows.</p>
-        <a href="https://github.com/SubhanKhanPathan99/cypress-ecommerce" target="_blank" class="btn">View on GitHub</a>
-      </div>
-      <div class="project-card">
-        <h3>API Performance Testing</h3>
-        <p>REST API load testing using JMeter.</p>
-        <a href="https://github.com/SubhanKhanPathan99/api-testing" target="_blank" class="btn">View on GitHub</a>
-      </div>
-    </div>
   </section>
 
   <!-- Experience -->
   <section id="experience">
     <h2 class="section-title">My <span>Experience</span></h2>
     <div class="timeline">
+
+      <!-- Answer Financial -->
       <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Answer Financial</h3>
-          <span class="date">Jan 2019 – Aug 2022 (3 yrs 7 mos)</span>
-          <p><strong>Senior QA Tester</strong></p>
-          <ul>
-            <li>Built automation frameworks (Selenium, Java, TestNG).</li>
-            <li>Reduced regression cycle time by 45%.</li>
-            <li>Integrated tests into CI/CD pipelines (Jenkins).</li>
-          </ul>
-        </div>
+        <h3>Answer Financial <span>| Senior QA Tester</span></h3>
+        <p class="date">Sep 2024 – Present</p>
+        <ul>
+          <li>Architected automation frameworks with Selenium, Cypress, Playwright reducing regression by 45%.</li>
+          <li>Conducted API validation with Postman, Swagger, SOAP UI.</li>
+          <li>Performed DB testing with SQL & MongoDB ensuring transaction consistency.</li>
+          <li>Integrated QA into CI/CD pipelines (Jenkins, GitHub Actions, Azure DevOps).</li>
+          <li>Coordinated UAT with business stakeholders reducing defects by 30%.</li>
+          <li>Delivered test reports in Jira, TestRail, qTest.</li>
+          <li>Collaborated with developers & BAs in Agile ceremonies to accelerate delivery.</li>
+        </ul>
       </div>
+
+      <!-- MetLife -->
       <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>MetLife</h3>
-          <span class="date">Sep 2022 – Jul 2024 (1 yr 11 mos)</span>
-          <p><strong>Senior QA Tester</strong></p>
-          <ul>
-            <li>Automated suite, reduced execution from 3 days → 12 hrs.</li>
-            <li>Improved coverage by 35% across multiple platforms.</li>
-            <li>Collaborated with devs to fix 20+ critical defects early.</li>
-          </ul>
-        </div>
+        <h3>MetLife <span>| Senior QA Tester</span></h3>
+        <p class="date">Jun 2020 – Oct 2022</p>
+        <ul>
+          <li>Automated regression suites with Selenium, Cypress BDD, TestNG reducing execution from 3 days → 12 hrs.</li>
+          <li>Performed load testing with JMeter simulating 150+ users.</li>
+          <li>Validated cart, order, and payment workflows with functional & integration testing.</li>
+          <li>Conducted cross-browser testing via LambdaTest & BrowserStack.</li>
+          <li>Executed API testing using Postman & SOAP UI (REST/SOAP).</li>
+          <li>Managed test data in MySQL & MongoDB validating pricing & availability.</li>
+          <li>Integrated automation with Jenkins, GitHub, Docker, LambdaTest.</li>
+          <li>Tracked requirements & defects in Zephyr, Jira, and Confluence.</li>
+        </ul>
       </div>
+
+      <!-- Mphasis -->
       <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Mphasis</h3>
-          <span class="date">Aug 2024 – Present</span>
-          <p><strong>QA Automation Engineer</strong></p>
-          <ul>
-            <li>Enhanced automation coverage across finance & healthcare clients.</li>
-            <li>Optimized CI/CD pipelines for faster delivery.</li>
-            <li>Introduced API test automation (REST Assured).</li>
-          </ul>
-        </div>
+        <h3>Mphasis <span>| QA Engineer</span></h3>
+        <p class="date">Jun 2018 – Jun 2020</p>
+        <ul>
+          <li>Designed and automated regression suites with Selenium & Jenkins.</li>
+          <li>Performed system, integration, and functional testing for enterprise IT apps.</li>
+          <li>Developed SQL queries (T-SQL, MySQL) for backend validation & ETL testing.</li>
+          <li>Conducted cross-platform testing via BrowserStack for OS/browser/device support.</li>
+          <li>Participated in Agile ceremonies improving collaboration & coverage.</li>
+        </ul>
       </div>
+
+      <!-- QA Intern -->
+      <div class="timeline-item">
+        <h3>QA Intern</h3>
+        <p class="date">Jun 2017 – May 2018</p>
+        <ul>
+          <li>Assisted in monitoring, issue analysis & documentation of recurring IT errors.</li>
+          <li>Created test cases, executed validations, logged defects in defect tracking systems.</li>
+        </ul>
+      </div>
+
     </div>
   </section>
 
@@ -288,33 +414,43 @@
   <section id="skills">
     <h2 class="section-title">My <span>Skills</span></h2>
     <div class="skills-container">
-      <span class="skill">Java</span><span class="skill">Python</span><span class="skill">JavaScript</span><span class="skill">SQL</span>
-      <span class="skill">Selenium</span><span class="skill">Cypress</span><span class="skill">Playwright</span>
-      <span class="skill">JUnit</span><span class="skill">TestNG</span><span class="skill">Jenkins</span>
-      <span class="skill">GitHub Actions</span><span class="skill">Maven</span><span class="skill">Gradle</span><span class="skill">Azure DevOps</span>
-      <span class="skill">JMeter</span><span class="skill">Postman</span><span class="skill">REST Assured</span>
-      <span class="skill">AWS</span><span class="skill">Docker</span><span class="skill">Git</span>
+      <span class="skill">Java</span>
+      <span class="skill">Python</span>
+      <span class="skill">JavaScript</span>
+      <span class="skill">SQL</span>
+      <span class="skill">Selenium WebDriver</span>
+      <span class="skill">Cypress</span>
+      <span class="skill">Playwright</span>
+      <span class="skill">JUnit</span>
+      <span class="skill">TestNG</span>
+      <span class="skill">Jenkins</span>
+      <span class="skill">GitHub Actions</span>
+      <span class="skill">Maven</span>
+      <span class="skill">Gradle</span>
+      <span class="skill">Azure DevOps</span>
+      <span class="skill">JMeter</span>
+      <span class="skill">Postman</span>
+      <span class="skill">REST Assured</span>
+      <span class="skill">AWS</span>
+      <span class="skill">Docker</span>
+      <span class="skill">Git</span>
     </div>
   </section>
 
   <!-- Contact -->
   <section id="contact" class="contact">
-    <h2 class="section-title">Get in <span>Touch</span></h2>
-    <div class="contact-icons">
-      <a href="tel:+13169259995"><i class='bx bx-phone'></i> +1 (316) 925-9995</a>
-      <a href="mailto:subhankhanpathan99@gmail.com"><i class='bx bx-envelope'></i> subhankhanpathan99@gmail.com</a>
-      <a href="https://www.linkedin.com/in/pathan-subhan-khan-256547147/" target="_blank"><i class='bx bxl-linkedin'></i> LinkedIn</a>
-      <a href="https://github.com/SubhanKhanPathan99" target="_blank"><i class='bx bxl-github'></i> GitHub</a>
+    <h2 class="section-title">Contact <span>Me</span></h2>
+    <div class="contact-details">
+      <div class="contact-item"><i class='bx bx-phone'></i> +1 (316) 925-9995</div>
+      <div class="contact-item"><i class='bx bx-envelope'></i> subhankhanpathan99@gmail.com</div>
+      <div class="contact-item"><i class='bx bxl-linkedin'></i> <a href="https://www.linkedin.com/in/pathan-subhan-khan-256547147/" target="_blank">LinkedIn</a></div>
+      <div class="contact-item"><i class='bx bxl-github'></i> <a href="https://github.com/SubhanKhanPathan99" target="_blank">GitHub</a></div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer><p>© 2025 Subhan Khan Pathan. All Rights Reserved.</p></footer>
+  <!-- Scroll to Top -->
+  <div id="scrollTop"><i class='bx bx-chevron-up'></i></div>
 
-  <!-- Scroll-to-top -->
-  <div class="scroll-top" id="scrollTop"><i class='bx bx-up-arrow-alt'></i></div>
-
-  <!-- JS -->
   <script>
     // Rotating job titles
     const titles = ["QA Automation Engineer", "Selenium/Cypress Specialist", "Test Automation Expert", "Automation Framework Developer"];
@@ -324,24 +460,19 @@
       i = (i + 1) % titles.length;
     }, 3000);
 
-    // Timeline animation
+    // Timeline scroll animation
     const timelineItems = document.querySelectorAll('.timeline-item');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
     }, { threshold: 0.2 });
     timelineItems.forEach(item => observer.observe(item));
 
-    // Theme toggle
-    document.querySelector(".toggle-theme").addEventListener("click", () => {
-      document.body.dataset.theme = document.body.dataset.theme === "light" ? "dark" : "light";
-    });
-
-    // Scroll to Projects
+    // Scroll down
     document.querySelector('.scroll-down').addEventListener('click', () => {
-      document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' });
+      document.querySelector('#experience').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Scroll-to-top button
+    // Scroll top
     const scrollTopBtn = document.getElementById('scrollTop');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 400) scrollTopBtn.classList.add('show');
