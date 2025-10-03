@@ -22,12 +22,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-
-    body {
-      background: var(--bg-color);
-      color: var(--text-color);
-      scroll-behavior: smooth;
-    }
+    body { background: var(--bg-color); color: var(--text-color); scroll-behavior: smooth; }
 
     /* Navbar */
     .navbar {
@@ -45,7 +40,7 @@
     /* Home */
     .home {
       display: flex; justify-content: space-between; align-items: center;
-      min-height: 100vh; padding: 80px 9% 0; gap: 50px;
+      min-height: 100vh; padding: 80px 9% 0; gap: 50px; position: relative;
     }
     .home-info h1 { font-size: 50px; }
     .home-info h3 { font-size: 28px; margin: 10px 0; }
@@ -61,8 +56,8 @@
     .home-img { position: relative; width: 320px; height: 320px; }
     .home-img img {
       width: 100%; height: 100%;
-      border-radius: 50%; object-fit: cover; aspect-ratio: 1/1;
-      border: 3px solid var(--accent-color);
+      aspect-ratio: 1 / 1; object-fit: cover;
+      border-radius: 50%; border: 3px solid var(--accent-color);
     }
     .home-img::before, .home-img::after {
       content: ''; position: absolute; top: 50%; left: 50%;
@@ -80,6 +75,18 @@
       animation: rotate 10s linear infinite reverse;
     }
     @keyframes rotate { from {transform: translate(-50%, -50%) rotate(0);} to {transform: translate(-50%, -50%) rotate(360deg);} }
+
+    /* Scroll down indicator */
+    .scroll-down {
+      position: absolute; bottom: 20px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 32px; color: var(--accent-color);
+      animation: bounce 1.5s infinite; cursor: pointer;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, -12px); }
+    }
 
     /* Sections */
     section { padding: 80px 9%; }
@@ -120,17 +127,16 @@
       border-radius: 8px; padding: 15px; display: inline-block; max-width: 90%;
     }
     .timeline-content h3 { color: var(--accent-color); margin-bottom: 8px; }
+    .timeline-content .date {
+      font-size: 14px; font-style: italic; color: #aaa; margin-bottom: 6px; display: block;
+    }
     .timeline-content ul { margin-left: 20px; text-align: left; }
 
     /* Skills */
-    .skills-container {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 15px; margin-top: 30px;
-    }
+    .skills-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px; }
     .skill {
-      border: 1.5px solid var(--accent-color);
-      padding: 10px 18px; border-radius: 25px;
-      background: var(--secondary-bg); color: var(--text-color);
+      border: 1.5px solid var(--accent-color); padding: 10px 18px;
+      border-radius: 25px; background: var(--secondary-bg); color: var(--text-color);
       transition: 0.3s; position: relative; overflow: hidden;
     }
     .skill::after {
@@ -140,10 +146,7 @@
       transition: 0.5s;
     }
     .skill:hover::after { left: 100%; }
-    .skill:hover {
-      background: var(--accent-color); color: #111;
-      box-shadow: 0 0 20px rgba(0,255,0,0.7);
-    }
+    .skill:hover { background: var(--accent-color); color: #111; box-shadow: 0 0 20px rgba(0,255,0,0.7); }
 
     /* Contact */
     .contact { text-align: center; background: var(--secondary-bg); padding: 60px 9%; }
@@ -164,6 +167,25 @@
     .contact-icons a:hover { background: var(--accent-color); color: #111; }
 
     footer { text-align: center; padding: 15px; font-size: 14px; background: var(--bg-color); }
+
+    /* Scroll-to-top button */
+    .scroll-top {
+      position: fixed; bottom: 25px; right: 25px;
+      background: var(--accent-color); color: #111;
+      width: 45px; height: 45px;
+      border-radius: 50%; display: flex; justify-content: center; align-items: center;
+      font-size: 22px; cursor: pointer;
+      box-shadow: 0 0 15px rgba(0,255,0,0.6);
+      transition: 0.3s;
+      opacity: 0; visibility: hidden;
+      animation: pulse 2s infinite;
+    }
+    .scroll-top.show { opacity: 1; visibility: visible; }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px rgba(0,255,0,0.4); }
+      50% { box-shadow: 0 0 25px rgba(0,255,0,1); }
+      100% { box-shadow: 0 0 10px rgba(0,255,0,0.4); }
+    }
   </style>
 </head>
 <body>
@@ -191,6 +213,7 @@
     <div class="home-img">
       <img src="Image.png" alt="Profile">
     </div>
+    <div class="scroll-down"><i class='bx bx-chevron-down'></i></div>
   </section>
 
   <!-- Projects -->
@@ -219,11 +242,11 @@
   <section id="experience">
     <h2 class="section-title">My <span>Experience</span></h2>
     <div class="timeline">
-
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
           <h3>Answer Financial</h3>
+          <span class="date">Jan 2019 – Aug 2022 (3 yrs 7 mos)</span>
           <p><strong>Senior QA Tester</strong></p>
           <ul>
             <li>Built automation frameworks (Selenium, Java, TestNG).</li>
@@ -232,24 +255,24 @@
           </ul>
         </div>
       </div>
-
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
           <h3>MetLife</h3>
+          <span class="date">Sep 2022 – Jul 2024 (1 yr 11 mos)</span>
           <p><strong>Senior QA Tester</strong></p>
           <ul>
-            <li>Automated test suite reducing execution from 3 days → 12 hrs.</li>
-            <li>Improved test coverage by 35% across multiple platforms.</li>
-            <li>Collaborated with devs to catch 20+ critical defects early.</li>
+            <li>Automated suite, reduced execution from 3 days → 12 hrs.</li>
+            <li>Improved coverage by 35% across multiple platforms.</li>
+            <li>Collaborated with devs to fix 20+ critical defects early.</li>
           </ul>
         </div>
       </div>
-
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
           <h3>Mphasis</h3>
+          <span class="date">Aug 2024 – Present</span>
           <p><strong>QA Automation Engineer</strong></p>
           <ul>
             <li>Enhanced automation coverage across finance & healthcare clients.</li>
@@ -258,7 +281,6 @@
           </ul>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -287,33 +309,47 @@
   </section>
 
   <!-- Footer -->
-  <footer>
-    <p>© 2025 Subhan Khan Pathan. All Rights Reserved.</p>
-  </footer>
+  <footer><p>© 2025 Subhan Khan Pathan. All Rights Reserved.</p></footer>
+
+  <!-- Scroll-to-top -->
+  <div class="scroll-top" id="scrollTop"><i class='bx bx-up-arrow-alt'></i></div>
 
   <!-- JS -->
   <script>
     // Rotating job titles
-    const titles = ["QA Automation Engineer", "Selenium/Cypress Specialist", "Test Automation Expert", "CI/CD Engineer"];
+    const titles = ["QA Automation Engineer", "Selenium/Cypress Specialist", "Test Automation Expert", "Automation Framework Developer"];
     let i = 0;
     setInterval(() => {
       document.getElementById("job-title").textContent = titles[i];
       i = (i + 1) % titles.length;
-    }, 2500);
+    }, 3000);
 
-    // Dark/Light mode
-    document.querySelector('.toggle-theme').addEventListener('click', () => {
+    // Timeline animation
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
+    }, { threshold: 0.2 });
+    timelineItems.forEach(item => observer.observe(item));
+
+    // Theme toggle
+    document.querySelector(".toggle-theme").addEventListener("click", () => {
       document.body.dataset.theme = document.body.dataset.theme === "light" ? "dark" : "light";
     });
 
-    // Timeline scroll animation
-    const items = document.querySelectorAll('.timeline-item');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('show');
-      });
-    }, { threshold: 0.2 });
-    items.forEach(item => observer.observe(item));
+    // Scroll to Projects
+    document.querySelector('.scroll-down').addEventListener('click', () => {
+      document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Scroll-to-top button
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) scrollTopBtn.classList.add('show');
+      else scrollTopBtn.classList.remove('show');
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
