@@ -3,124 +3,169 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Subhan Khan Pathan</title>
+  <title>Subhan Khan Pathan | Portfolio</title>
   <style>
+    /* Global Styles */
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #0d0d0d;
       color: #fff;
+      background: #0d0d0d;
       overflow-x: hidden;
     }
-
-    /* Background animation */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: url('https://i.ibb.co/G7KhH2c/space-bg.gif') repeat;
-      opacity: 0.2;
-      z-index: -1;
+    h1, h2, h3 {
+      text-align: center;
+    }
+    a {
+      color: limegreen;
+      text-decoration: none;
     }
 
+    /* Navbar */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 50px;
       background: #000;
+      padding: 15px 50px;
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 10;
     }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
+    nav .logo {
+      font-size: 20px;
       font-weight: bold;
     }
-    nav a:hover { color: limegreen; }
-
-    /* Hero Section */
-    .hero {
+    nav ul {
+      list-style: none;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 80px 10%;
+      gap: 30px;
     }
-    .hero-text {
-      flex: 1;
+    nav ul li a {
+      color: white;
+      transition: color 0.3s;
     }
-    .hero-text h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-    .hero-text h2 {
-      font-size: 1.5rem;
+    nav ul li a:hover {
       color: limegreen;
-      margin-bottom: 15px;
-      height: 40px;
+    }
+
+    /* Particle Background */
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
       overflow: hidden;
     }
-    .hero-text p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-      max-width: 500px;
-    }
-    .btn {
+    .particles span {
+      position: absolute;
+      width: 3px; height: 3px;
       background: limegreen;
-      padding: 12px 25px;
-      color: #000;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: all 0.3s;
+      border-radius: 50%;
+      animation: move 10s linear infinite;
     }
-    .btn:hover { background: darkgreen; color: #fff; }
+    @keyframes move {
+      from { transform: translateY(0) scale(1); opacity: 1; }
+      to { transform: translateY(-1000px) scale(0.5); opacity: 0; }
+    }
 
-    .hero img {
-      width: 220px;
-      height: 220px;
+    /* Home Section */
+    #home {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 80px 50px;
+      min-height: 100vh;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+    #home img {
+      width: 220px; height: 220px;
       border-radius: 50%;
       border: 3px solid limegreen;
     }
+    .home-text {
+      max-width: 600px;
+    }
+    .home-text h1 {
+      font-size: 40px;
+    }
+    .role {
+      font-size: 22px;
+      font-weight: bold;
+      color: limegreen;
+      margin: 10px 0;
+      min-height: 30px;
+      border-right: 2px solid limegreen;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(30, end) infinite alternate;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: limegreen;
+      color: black;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+    .btn:hover {
+      box-shadow: 0 0 15px limegreen;
+    }
 
-    /* Section headings */
+    /* Section Layout */
     section {
-      padding: 60px 10%;
-      text-align: center;
+      padding: 80px 50px;
+      min-height: 100vh;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
     }
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    /* Experience Cards */
+    /* Experience */
     .experience-container {
       display: flex;
+      gap: 20px;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
     }
-    .exp-card {
-      background: #111;
+    .experience-card {
+      flex: 1;
+      min-width: 300px;
+      background: rgba(0, 0, 0, 0.7);
       border: 2px solid limegreen;
-      border-radius: 10px;
       padding: 20px;
-      width: 300px;
-      text-align: left;
-      transition: 0.3s;
+      border-radius: 8px;
+      transition: all 0.3s;
     }
-    .exp-card:hover { background: #0a0; transform: scale(1.05); }
-    .exp-card h3 { margin: 0; color: limegreen; }
+    .experience-card:hover {
+      box-shadow: 0 0 20px limegreen;
+      transform: translateY(-5px);
+    }
+    .experience-card ul {
+      padding-left: 20px;
+    }
 
-    /* Project Flip Cards */
+    /* Projects */
     .projects-container {
       display: flex;
       flex-wrap: wrap;
+      gap: 20px;
       justify-content: center;
-      gap: 30px;
     }
     .project-card {
       width: 300px;
@@ -128,11 +173,10 @@
       perspective: 1000px;
     }
     .project-inner {
-      position: relative;
       width: 100%; height: 100%;
-      text-align: center;
-      transition: transform 0.8s;
+      position: relative;
       transform-style: preserve-3d;
+      transition: transform 0.8s;
     }
     .project-card:hover .project-inner {
       transform: rotateY(180deg);
@@ -140,25 +184,24 @@
     .project-front, .project-back {
       position: absolute;
       width: 100%; height: 100%;
-      border: 2px solid limegreen;
-      border-radius: 10px;
       backface-visibility: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
+      border: 2px solid limegreen;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
     }
     .project-front img {
-      width: 100%; height: 150px;
+      width: 100%;
+      height: 180px;
       object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 10px;
+      border-radius: 6px;
     }
-    .project-front h3 { margin-bottom: 10px; }
+    .project-front h3 {
+      margin: 10px 0;
+    }
     .project-back {
-      background: #111;
       transform: rotateY(180deg);
+      background: #111;
     }
 
     /* Skills */
@@ -172,138 +215,163 @@
       padding: 10px 20px;
       border: 2px solid limegreen;
       border-radius: 20px;
-      transition: 0.3s;
+      transition: all 0.3s;
     }
-    .skill:hover { background: limegreen; color: black; transform: scale(1.1); }
+    .skill:hover {
+      background: limegreen;
+      color: black;
+      box-shadow: 0 0 20px limegreen;
+      transform: scale(1.1);
+    }
 
     /* Contact */
     .contact-container {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
+      flex-wrap: wrap;
     }
     .contact-item {
-      padding: 12px 20px;
+      padding: 15px 25px;
       border: 2px solid limegreen;
-      border-radius: 30px;
-      transition: 0.3s;
+      border-radius: 25px;
+      transition: all 0.3s;
     }
-    .contact-item:hover { background: limegreen; color: black; box-shadow: 0 0 15px limegreen; }
+    .contact-item:hover {
+      box-shadow: 0 0 20px limegreen;
+      background: limegreen;
+      color: black;
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
+  <!-- Particles -->
+  <div class="particles">
+    <span style="top:90%; left:10%; animation-delay:0s;"></span>
+    <span style="top:95%; left:30%; animation-delay:2s;"></span>
+    <span style="top:92%; left:50%; animation-delay:4s;"></span>
+    <span style="top:96%; left:70%; animation-delay:6s;"></span>
+    <span style="top:94%; left:85%; animation-delay:8s;"></span>
+  </div>
+
+  <!-- Navbar -->
   <nav>
-    <div class="logo"><b>Portfolio</b></div>
-    <div>
-      <a href="#home">Home</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </div>
+    <div class="logo">Portfolio</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-text">
+  <!-- Home -->
+  <section id="home">
+    <div class="home-text">
       <h1>Subhan Khan Pathan</h1>
-      <h2 id="role">QA Automation Engineer</h2>
-      <p>Senior QA Automation Engineer with 6+ years of experience delivering high-quality solutions across finance, insurance, retail, and e-commerce. Skilled in test automation frameworks, CI/CD, and cloud testing.</p>
+      <div class="role">QA Automation Engineer</div>
+      <p>Senior QA Automation Engineer with 6+ years of experience delivering high-quality software solutions across finance, insurance, retail, and e-commerce. Skilled in automation frameworks, CI/CD, and cross-browser testing.</p>
       <a href="Resume.pdf" class="btn" target="_blank">View Resume</a>
     </div>
-    <img src="Image.png" alt="Profile">
+    <img src="Image.png" alt="Profile Picture">
   </section>
 
-  <!-- Experience Section -->
+  <!-- Experience -->
   <section id="experience">
     <h2>My Experience</h2>
     <div class="experience-container">
-      <div class="exp-card">
-        <h3>Answer Financial</h3>
-        <p><b>Senior QA Tester</b><br>Sep 2024 – Present</p>
+      <div class="experience-card">
+        <h3>Answer Financial | Senior QA Tester</h3>
+        <p>Sep 2024 – Present</p>
         <ul>
           <li>Architected automation frameworks (Selenium, Cypress, Playwright).</li>
           <li>Performed API validation with Postman, Swagger, SOAP UI.</li>
-          <li>Embedded QA in CI/CD pipelines (Jenkins, GitHub Actions, Azure DevOps).</li>
+          <li>Database testing with SQL and MongoDB.</li>
+          <li>Embedded QA into CI/CD pipelines (Jenkins, GitHub, Azure).</li>
+          <li>Coordinated UAT sessions reducing defects by 30%.</li>
         </ul>
       </div>
-      <div class="exp-card">
-        <h3>MetLife</h3>
-        <p><b>Senior QA Tester</b><br>Jun 2020 – Oct 2022</p>
+      <div class="experience-card">
+        <h3>MetLife | Senior QA Tester</h3>
+        <p>Jun 2020 – Oct 2022</p>
         <ul>
-          <li>Automated regression with Selenium, Cypress BDD.</li>
-          <li>Performed performance testing with JMeter & LoadRunner.</li>
-          <li>Validated shopping cart, payment workflows, and APIs.</li>
+          <li>Automated regression with Selenium, Cypress BDD, TestNG.</li>
+          <li>Performance testing with JMeter (150 users).</li>
+          <li>Validated e-commerce workflows & payments.</li>
+          <li>Integrated CI/CD with Jenkins, Docker, LambdaTest.</li>
         </ul>
       </div>
-      <div class="exp-card">
-        <h3>Mphasis</h3>
-        <p><b>QA Engineer</b><br>Jun 2018 – Jun 2020</p>
+      <div class="experience-card">
+        <h3>Mphasis | QA Engineer</h3>
+        <p>Jun 2018 – Jun 2020</p>
         <ul>
-          <li>Automated regression & smoke testing (Selenium, Jenkins).</li>
-          <li>Executed SQL queries for backend validation & ETL testing.</li>
+          <li>Designed & automated regression tests with Selenium.</li>
+          <li>Performed SQL backend validation & ETL testing.</li>
           <li>Cross-platform testing with BrowserStack.</li>
         </ul>
       </div>
-      <div class="exp-card">
+      <div class="experience-card">
         <h3>QA Intern</h3>
-        <p><b>Intern</b><br>Jun 2017 – May 2018</p>
+        <p>Jun 2017 – May 2018</p>
         <ul>
-          <li>Supported test case creation & defect logging.</li>
-          <li>Performed application monitoring & issue analysis.</li>
+          <li>Supported test case execution and defect tracking.</li>
+          <li>Documented recurring IT issues for stability improvements.</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
+  <!-- Projects -->
   <section id="projects">
     <h2>My Projects</h2>
     <div class="projects-container">
-      <!-- Playwright -->
       <div class="project-card">
         <div class="project-inner">
           <div class="project-front">
-            <img src="playwright-cross-browser_831x542.jpg" alt="Playwright">
-            <h3>Playwright Automation</h3>
-            <p>Cross-browser automation with Playwright.</p>
-            <a href="https://github.com/SubhanKhanPathan99/PLA_Automation_Tutorial" class="btn" target="_blank">GitHub</a>
+            <img src="playwright-cross-browser_831x542.jpg" alt="Playwright Project">
+            <h3>Playwright Automation Framework</h3>
+            <p>Cross-browser automation with CI/CD pipelines.</p>
+            <a href="https://github.com/SubhanKhanPathan99/PLA_Automation_Tutorial" class="btn" target="_blank">View on GitHub</a>
           </div>
           <div class="project-back">
             <h3>Playwright Automation Framework</h3>
-            <p>End-to-end automation with Playwright integrated into CI/CD pipelines (Azure DevOps, GitHub Actions, AWS CodeBuild). Includes HTML & Allure reports, parallel testing, and cross-browser coverage.</p>
+            <p>Developed a cross-browser automation solution using Playwright integrated with CI/CD pipelines (GitHub Actions, Jenkins). Generated HTML/Allure reports for insights and tested applications across Chrome, Firefox, and WebKit.</p>
           </div>
         </div>
       </div>
-      <!-- DBMS -->
+
       <div class="project-card">
         <div class="project-inner">
           <div class="project-front">
-            <img src="dbms.jpg" alt="DBMS">
+            <img src="dbms.jpg" alt="DBMS Project">
             <h3>DBMS Project</h3>
-            <p>Database Management System project.</p>
-            <a href="https://github.com/SubhanKhanPathan99/DBMS-PROJECT" class="btn" target="_blank">GitHub</a>
+            <p>Efficient database management with CRUD operations.</p>
+            <a href="https://github.com/SubhanKhanPathan99/DBMS-PROJECT" class="btn" target="_blank">View on GitHub</a>
           </div>
           <div class="project-back">
             <h3>DBMS Project</h3>
-            <p>Built a database management system with efficient queries, schema optimization, CRUD operations, and real-time validations. Designed for academic and enterprise workflows.</p>
+            <p>Built a Database Management System for optimized queries, schema normalization, and real-time CRUD operations. Implemented transaction consistency and scalability for enterprise systems.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills Section -->
+  <!-- Skills -->
   <section id="skills">
     <h2>My Skills</h2>
     <div class="skills-container">
       <div class="skill">Java</div>
       <div class="skill">Python</div>
+      <div class="skill">JavaScript</div>
       <div class="skill">SQL</div>
       <div class="skill">Selenium WebDriver</div>
       <div class="skill">Cypress</div>
       <div class="skill">Playwright</div>
+      <div class="skill">JUnit</div>
+      <div class="skill">TestNG</div>
       <div class="skill">Jenkins</div>
       <div class="skill">GitHub Actions</div>
       <div class="skill">Azure DevOps</div>
@@ -315,40 +383,29 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact -->
   <section id="contact">
     <h2>Contact Me</h2>
     <div class="contact-container">
       <div class="contact-item">📞 +1 (316) 925-9995</div>
       <div class="contact-item">✉️ subhankhanpathan99@gmail.com</div>
-      <div class="contact-item"><a href="https://linkedin.com" target="_blank">LinkedIn</a></div>
+      <div class="contact-item"><a href="https://www.linkedin.com/in/subhankhanpathan99" target="_blank">LinkedIn</a></div>
       <div class="contact-item"><a href="https://github.com/SubhanKhanPathan99" target="_blank">GitHub</a></div>
     </div>
   </section>
 
-  <!-- Role Animation -->
   <script>
-    const roles = ["QA Automation Engineer", "Selenium/Cypress Specialist", "Playwright Expert", "Test Automation Specialist", "CI/CD & Cloud Enthusiast"];
-    let roleIndex = 0;
-    const roleElement = document.getElementById("role");
-
-    function typeRole() {
-      let role = roles[roleIndex];
-      let i = 0;
-      roleElement.textContent = "";
-      let typing = setInterval(() => {
-        roleElement.textContent += role[i];
-        i++;
-        if (i === role.length) {
-          clearInterval(typing);
-          setTimeout(() => {
-            roleIndex = (roleIndex + 1) % roles.length;
-            typeRole();
-          }, 2000);
+    // Fade-in animation on scroll
+    const sections = document.querySelectorAll("section, #home");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
         }
-      }, 100);
-    }
-    typeRole();
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
   </script>
 </body>
 </html>
