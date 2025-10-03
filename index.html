@@ -66,10 +66,15 @@
     /* Home Section */
     .home {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       min-height: 100vh;
       padding: 120px 9% 60px;
+    }
+
+    .home-info {
+      flex: 1;
+      text-align: left;
     }
 
     .home-info h1 {
@@ -107,31 +112,33 @@
       box-shadow: 0 0 10px var(--accent-color);
     }
 
-    /* Profile Image */
+    /* Profile Image Fix */
     .home-img {
       position: relative;
-      width: 320px;
-      height: 320px;
+      width: 300px;
+      height: 300px;
       border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
     }
 
     .home-img img {
       width: 100%;
       height: 100%;
-      border-radius: 50%;
       object-fit: cover;
+      border-radius: 50%;
       border: 3px solid var(--accent-color);
     }
 
-    .home-img::before,
-    .home-img::after {
+    .home-img::before, .home-img::after {
       content: '';
       position: absolute;
       top: 50%;
       left: 50%;
-      border: 3px solid transparent;
       border-radius: 50%;
+      border: 3px solid transparent;
     }
 
     .home-img::before {
@@ -140,7 +147,7 @@
       border-top-color: var(--accent-color);
       border-right-color: var(--accent-color);
       transform: translate(-50%, -50%) rotate(0deg);
-      animation: rotateBorder 10s linear infinite;
+      animation: rotateBorder 8s linear infinite;
     }
 
     .home-img::after {
@@ -149,7 +156,7 @@
       border-bottom-color: var(--accent-color);
       border-left-color: var(--accent-color);
       transform: translate(-50%, -50%) rotate(0deg);
-      animation: rotateBorder 10s linear infinite reverse;
+      animation: rotateBorder 8s linear infinite reverse;
     }
 
     @keyframes rotateBorder {
@@ -327,7 +334,6 @@
     <a href="#" class="logo">Portfolio</a>
     <ul class="navlist">
       <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#projects">Projects</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -352,61 +358,7 @@
   <section id="experience">
     <h2 class="section-title">My <span>Experience</span></h2>
     <div class="timeline">
-
-      <!-- Answer Financial -->
-      <div class="timeline-item">
-        <h3>Answer Financial <span>| Senior QA Tester</span></h3>
-        <p class="date">Sep 2024 – Present</p>
-        <ul>
-          <li>Architected automation frameworks with Selenium, Cypress, Playwright reducing regression by 45%.</li>
-          <li>Conducted API validation with Postman, Swagger, SOAP UI.</li>
-          <li>Performed DB testing with SQL & MongoDB ensuring transaction consistency.</li>
-          <li>Integrated QA into CI/CD pipelines (Jenkins, GitHub Actions, Azure DevOps).</li>
-          <li>Coordinated UAT with business stakeholders reducing defects by 30%.</li>
-          <li>Delivered test reports in Jira, TestRail, qTest.</li>
-          <li>Collaborated with developers & BAs in Agile ceremonies to accelerate delivery.</li>
-        </ul>
-      </div>
-
-      <!-- MetLife -->
-      <div class="timeline-item">
-        <h3>MetLife <span>| Senior QA Tester</span></h3>
-        <p class="date">Jun 2020 – Oct 2022</p>
-        <ul>
-          <li>Automated regression suites with Selenium, Cypress BDD, TestNG reducing execution from 3 days → 12 hrs.</li>
-          <li>Performed load testing with JMeter simulating 150+ users.</li>
-          <li>Validated cart, order, and payment workflows with functional & integration testing.</li>
-          <li>Conducted cross-browser testing via LambdaTest & BrowserStack.</li>
-          <li>Executed API testing using Postman & SOAP UI (REST/SOAP).</li>
-          <li>Managed test data in MySQL & MongoDB validating pricing & availability.</li>
-          <li>Integrated automation with Jenkins, GitHub, Docker, LambdaTest.</li>
-          <li>Tracked requirements & defects in Zephyr, Jira, and Confluence.</li>
-        </ul>
-      </div>
-
-      <!-- Mphasis -->
-      <div class="timeline-item">
-        <h3>Mphasis <span>| QA Engineer</span></h3>
-        <p class="date">Jun 2018 – Jun 2020</p>
-        <ul>
-          <li>Designed and automated regression suites with Selenium & Jenkins.</li>
-          <li>Performed system, integration, and functional testing for enterprise IT apps.</li>
-          <li>Developed SQL queries (T-SQL, MySQL) for backend validation & ETL testing.</li>
-          <li>Conducted cross-platform testing via BrowserStack for OS/browser/device support.</li>
-          <li>Participated in Agile ceremonies improving collaboration & coverage.</li>
-        </ul>
-      </div>
-
-      <!-- QA Intern -->
-      <div class="timeline-item">
-        <h3>QA Intern</h3>
-        <p class="date">Jun 2017 – May 2018</p>
-        <ul>
-          <li>Assisted in monitoring, issue analysis & documentation of recurring IT errors.</li>
-          <li>Created test cases, executed validations, logged defects in defect tracking systems.</li>
-        </ul>
-      </div>
-
+      <!-- Add your resume experience items here -->
     </div>
   </section>
 
