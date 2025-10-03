@@ -27,6 +27,7 @@
     .home-info h1 { font-size:46px; margin-bottom:10px;}
     .home-info h3 { font-size:26px; margin:15px 0; min-height:32px;}
     .highlight {color:var(--accent);}
+    .home-info p { margin-top:10px; line-height:1.6; font-size:16px; }
     .btn {
       display:inline-block; padding:12px 25px; background:var(--accent); color:#000; border-radius:6px;
       margin-top:15px; font-weight:600; box-shadow:0 0 15px var(--accent),0 0 30px var(--accent); transition:.3s;
@@ -37,18 +38,21 @@
 
     /* TYPING EFFECT */
     .role {color:var(--accent); font-weight:600; border-right:3px solid var(--accent); white-space:nowrap; overflow:hidden;}
-    @keyframes typing {from {width:0;} to {width:100%;}}
-    @keyframes blink {50% {border-color:transparent;}}
-    
+
     /* SECTION TITLES */
     section {padding:100px 10% 60px;}
     .section-title {text-align:center; font-size:36px; margin-bottom:40px;}
     .section-title span {color:var(--accent);}
 
-    /* EXPERIENCE */
+    /* EXPERIENCE SIDE-BY-SIDE */
+    .experience-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+      gap:20px;
+    }
     .timeline-item {
       background:#1a1a1a; border:2px solid var(--accent); border-radius:12px;
-      padding:20px; margin-bottom:25px; transition:.3s; opacity:0; transform:translateY(30px);
+      padding:20px; transition:.3s; opacity:0; transform:translateY(30px);
     }
     .timeline-item.show {opacity:1; transform:translateY(0); transition:.8s;}
     .timeline-item:hover {box-shadow:0 0 15px var(--accent),0 0 30px var(--accent); transform:translateY(-5px);}
@@ -116,7 +120,9 @@
     <div class="home-info">
       <h1>Subhan Khan Pathan</h1>
       <h3><span id="role" class="role"></span></h3>
-      <p>Senior QA Automation Engineer with 6+ years of experience delivering high-quality solutions.</p>
+      <p>Senior QA Automation Engineer with 6+ years of expertise in designing and implementing scalable automation 
+      frameworks, API validations, and CI/CD integrations. Skilled in Selenium, Cypress, Playwright, and performance 
+      testing across finance, insurance, retail, and e-commerce domains.</p>
       <a href="Resume.pdf" target="_blank" class="btn">View Resume</a>
     </div>
     <div class="home-img"><img src="Image.png" alt="Profile"></div>
@@ -125,43 +131,45 @@
   <!-- EXPERIENCE -->
   <section id="experience">
     <h2 class="section-title">My <span>Experience</span></h2>
-    <div class="timeline-item">
-      <h3>Answer Financial | Senior QA Tester</h3>
-      <p class="date">Sep 2024 – Present</p>
-      <ul>
-        <li>Architected Selenium, Cypress, Playwright frameworks – cut regression 45%.</li>
-        <li>Performed API validation (Postman, Swagger, SOAP UI).</li>
-        <li>Database testing with SQL & MongoDB ensuring consistency.</li>
-        <li>Embedded QA into CI/CD (Jenkins, GitHub Actions, Azure DevOps).</li>
-        <li>Coordinated UAT sessions reducing defects by 30%.</li>
-      </ul>
-    </div>
-    <div class="timeline-item">
-      <h3>MetLife | Senior QA Tester</h3>
-      <p class="date">Jun 2020 – Oct 2022</p>
-      <ul>
-        <li>Automated suites with Selenium, Cypress BDD – reduced execution 3d → 12h.</li>
-        <li>Performed performance testing with JMeter (150 users).</li>
-        <li>Cross-browser testing on BrowserStack & LambdaTest.</li>
-        <li>API testing for catalog, order, payments with Postman & SOAP UI.</li>
-      </ul>
-    </div>
-    <div class="timeline-item">
-      <h3>Mphasis | QA Engineer</h3>
-      <p class="date">Jun 2018 – Jun 2020</p>
-      <ul>
-        <li>Designed regression suites with Selenium & Jenkins CI/CD.</li>
-        <li>SQL queries for backend validation & ETL testing.</li>
-        <li>Cross-platform testing with BrowserStack.</li>
-      </ul>
-    </div>
-    <div class="timeline-item">
-      <h3>QA Intern</h3>
-      <p class="date">Jun 2017 – May 2018</p>
-      <ul>
-        <li>Created test cases, executed validations, logged defects.</li>
-        <li>Supported monitoring & issue analysis.</li>
-      </ul>
+    <div class="experience-grid">
+      <div class="timeline-item">
+        <h3>Answer Financial | Senior QA Tester</h3>
+        <p class="date">Sep 2024 – Present</p>
+        <ul>
+          <li>Architected Selenium, Cypress, Playwright frameworks – cut regression 45%.</li>
+          <li>Performed API validation (Postman, Swagger, SOAP UI).</li>
+          <li>Database testing with SQL & MongoDB ensuring consistency.</li>
+          <li>Embedded QA into CI/CD (Jenkins, GitHub Actions, Azure DevOps).</li>
+          <li>Coordinated UAT sessions reducing defects by 30%.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>MetLife | Senior QA Tester</h3>
+        <p class="date">Jun 2020 – Oct 2022</p>
+        <ul>
+          <li>Automated suites with Selenium, Cypress BDD – reduced execution 3d → 12h.</li>
+          <li>Performed performance testing with JMeter (150 users).</li>
+          <li>Cross-browser testing on BrowserStack & LambdaTest.</li>
+          <li>API testing for catalog, order, payments with Postman & SOAP UI.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Mphasis | QA Engineer</h3>
+        <p class="date">Jun 2018 – Jun 2020</p>
+        <ul>
+          <li>Designed regression suites with Selenium & Jenkins CI/CD.</li>
+          <li>SQL queries for backend validation & ETL testing.</li>
+          <li>Cross-platform testing with BrowserStack.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>QA Intern</h3>
+        <p class="date">Jun 2017 – May 2018</p>
+        <ul>
+          <li>Created test cases, executed validations, logged defects.</li>
+          <li>Supported monitoring & issue analysis.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -170,8 +178,15 @@
     <h2 class="section-title">My <span>Projects</span></h2>
     <div class="projects-container">
       <div class="project-card">
+        <h3>Playwright Automation Framework</h3>
+        <p>End-to-end UI automation using Playwright with Page Object Model, Allure reports, 
+        integrated into CI/CD pipelines (Azure DevOps, AWS CodeBuild). Published reports 
+        to S3 static site for visibility.</p>
+        <a href="https://github.com/SubhanKhanPathan99/PLA_Automation_Tutorial" target="_blank">View on GitHub</a>
+      </div>
+      <div class="project-card">
         <h3>Automation Framework</h3>
-        <p>Built scalable Selenium, Cypress, Playwright frameworks integrated with CI/CD.</p>
+        <p>Built scalable Selenium, Cypress frameworks integrated with CI/CD.</p>
       </div>
       <div class="project-card">
         <h3>API Testing Suite</h3>
