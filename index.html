@@ -4,213 +4,232 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Subhan Khan Pathan</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       background: #0a0a0a;
       color: white;
-      overflow-x: hidden;
+      line-height: 1.6;
     }
+
+    /* Navbar */
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: black;
+      background: #000;
       padding: 15px 50px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
       z-index: 1000;
     }
-    header h2 { margin: 0; }
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
     nav a {
-      margin: 0 15px;
       color: white;
+      margin: 0 15px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      transition: 0.3s;
     }
-    nav a:hover, nav a.active { color: #00ff88; }
-    
+    nav a:hover, nav a.active {
+      color: #00ff99;
+    }
+
+    /* Section Defaults */
     section {
-      min-height: 100vh;
-      padding: 100px 10%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding: 60px 80px;
+      text-align: center;
     }
-    /* HOME */
-    .home-container {
+    h2 {
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    /* Home */
+    #home {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-    }
-    .home-text {
-      flex: 1;
-    }
-    .home-text h1 {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
-    .home-text h2 {
-      color: #00ff88;
-      margin-bottom: 15px;
-    }
-    .home-text p {
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    .resume-btn {
-      background: #00ff88;
-      padding: 10px 20px;
-      border-radius: 20px;
-      color: black;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .resume-btn:hover { background: #00cc66; }
-    .home-img img {
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      border: 4px solid #00ff88;
-      object-fit: cover;
-    }
-
-    /* EXPERIENCE */
-    .experience {
-      text-align: center;
-    }
-    .experience h2 { margin-bottom: 40px; }
-    .exp-cards {
-      display: flex;
       justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .exp-card {
-      background: #111;
-      border: 2px solid #00ff88;
-      border-radius: 10px;
-      padding: 20px;
-      width: 280px;
-      transition: 0.3s;
+      gap: 60px;
+      min-height: 90vh;
+      padding: 40px 80px;
       text-align: left;
     }
-    .exp-card:hover { transform: translateY(-5px); }
-    .exp-card h3 { margin: 10px 0; color: #00ff88; }
-    .exp-card ul {
-      margin: 10px 0 0;
-      padding-left: 20px;
+    #home img {
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      border: 3px solid #00ff99;
+    }
+    #home .content h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+    #home .content h3 {
+      font-size: 22px;
+      color: #00ff99;
+      margin-bottom: 20px;
+    }
+    .btn {
+      background: #00ff99;
+      color: black;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #00cc77;
+      transform: scale(1.05);
     }
 
-    /* PROJECTS */
-    .projects {
-      text-align: center;
+    /* Experience Cards */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
     }
-    .projects h2 { margin-bottom: 40px; }
-    .project-cards {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
+    .card {
+      background: #111;
+      padding: 25px;
+      border: 2px solid #00ff99;
+      border-radius: 12px;
+      text-align: left;
+      transition: 0.3s;
     }
-    .project-card {
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #00cc77;
+    }
+    .card h3 {
+      margin: 0 0 5px;
+    }
+    .card h4 {
+      margin: 0 0 10px;
+      font-weight: 500;
+    }
+    .card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+    .flip-card {
+      background: transparent;
       perspective: 1000px;
-      width: 280px;
-      height: 320px;
     }
-    .project-inner {
+    .flip-card-inner {
       position: relative;
       width: 100%;
-      height: 100%;
-      transition: transform 0.8s;
+      height: 350px;
+      text-align: center;
+      transition: transform 0.6s;
       transform-style: preserve-3d;
     }
-    .project-card:hover .project-inner { transform: rotateY(180deg); }
-    .project-front, .project-back {
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
       position: absolute;
       width: 100%;
       height: 100%;
-      border: 2px solid #00ff88;
-      border-radius: 10px;
       backface-visibility: hidden;
+      border: 2px solid #00ff99;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #111;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      background: #111;
-      padding: 20px;
+      justify-content: center;
+      padding: 15px;
     }
-    .project-front img {
-      width: 80%;
-      height: 150px;
+    .flip-card-front img {
+      width: 100%;
+      height: 200px;
       object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 15px;
     }
-    .project-front h3 { margin: 10px 0; }
-    .project-back { transform: rotateY(180deg); text-align: center; }
-    .project-back a {
+    .flip-card-front h3 {
+      margin: 10px 0 0;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+      padding: 25px;
+      font-size: 14px;
+    }
+    .flip-card-back a {
       margin-top: 15px;
-      background: #00ff88;
+      background: #00ff99;
       color: black;
-      padding: 8px 15px;
-      border-radius: 20px;
+      padding: 8px 16px;
+      border-radius: 25px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .flip-card-back a:hover {
+      background: #00cc77;
     }
 
-    /* SKILLS */
-    .skills {
-      text-align: center;
-    }
-    .skills h2 { margin-bottom: 30px; }
-    .skill-tags {
+    /* Skills */
+    .skills-list {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 15px;
+      justify-content: center;
     }
     .skill {
-      border: 2px solid #00ff88;
-      padding: 8px 15px;
-      border-radius: 20px;
+      border: 2px solid #00ff99;
+      padding: 8px 18px;
+      border-radius: 25px;
       transition: 0.3s;
     }
-    .skill:hover { background: #00ff88; color: black; transform: scale(1.1); }
-
-    /* CONTACT */
-    .contact {
-      text-align: center;
+    .skill:hover {
+      background: #00ff99;
+      color: black;
+      transform: scale(1.05);
     }
-    .contact h2 { margin-bottom: 30px; }
-    .contact-links {
+
+    /* Contact */
+    .contact-grid {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      flex-wrap: wrap;
     }
-    .contact-links a {
-      border: 2px solid #00ff88;
-      padding: 10px 20px;
-      border-radius: 20px;
+    .contact-item {
+      border: 2px solid #00ff99;
+      padding: 12px 25px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
       text-decoration: none;
       color: white;
-      font-weight: bold;
-      transition: 0.3s;
     }
-    .contact-links a:hover { background: #00ff88; color: black; }
-
+    .contact-item:hover {
+      background: #00ff99;
+      color: black;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
   <header>
-    <h2>Portfolio</h2>
+    <h1>Portfolio</h1>
     <nav>
       <a href="#home" class="active">Home</a>
       <a href="#experience">Experience</a>
@@ -220,80 +239,74 @@
     </nav>
   </header>
 
-  <!-- HOME -->
+  <!-- Home -->
   <section id="home">
-    <div class="home-container">
-      <div class="home-text">
-        <h1>Subhan Khan Pathan</h1>
-        <h2><span id="role"></span></h2>
-        <p>Senior QA Automation Engineer with 6+ years of experience delivering high-quality
-           solutions across finance, insurance, retail, and e-commerce. Skilled in automation frameworks, CI/CD, cloud, and cross-browser testing.</p>
-        <a href="Resume.pdf" class="resume-btn" target="_blank">View Resume</a>
-      </div>
-      <div class="home-img">
-        <img src="Image.png" alt="Profile Picture">
-      </div>
+    <div class="content">
+      <h1>Subhan Khan Pathan</h1>
+      <h3>Selenium / Cypress Specialist</h3>
+      <p>Senior QA Automation Engineer with 6+ years of experience delivering high-quality solutions across finance, insurance, retail, and e-commerce. Skilled in test automation, CI/CD, cloud, and cross-browser testing.</p>
+      <a href="Resume.pdf" class="btn" target="_blank">View Resume</a>
     </div>
+    <img src="Image.png" alt="Profile Picture">
   </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience" class="experience">
+  <!-- Experience -->
+  <section id="experience">
     <h2>My Experience</h2>
-    <div class="exp-cards">
-      <div class="exp-card">
+    <div class="experience-grid">
+      <div class="card">
         <h3>Answer Financial</h3>
-        <p>Senior QA Tester | Sep 2024 – Present</p>
+        <h4>Senior QA Tester | Sep 2024 – Present</h4>
         <ul>
-          <li>Architected frameworks (Selenium, Cypress, Playwright).</li>
-          <li>API validation with Postman & REST Assured.</li>
-          <li>Cloud pipelines with Jenkins, GitHub Actions, Azure DevOps.</li>
+          <li>Architected automation frameworks (Selenium, Cypress, Playwright).</li>
+          <li>Performed API validation with Postman.</li>
+          <li>Integrated CI/CD pipelines with Jenkins, GitHub Actions, CircleCI.</li>
         </ul>
       </div>
-      <div class="exp-card">
+      <div class="card">
         <h3>MetLife</h3>
-        <p>Senior QA Tester | Jun 2020 – Oct 2022</p>
+        <h4>Senior QA Tester | Jun 2020 – Oct 2022</h4>
         <ul>
           <li>Automated regression with Selenium, Cypress BDD.</li>
-          <li>Performance testing with JMeter.</li>
-          <li>Ensured compliance across insurance products.</li>
+          <li>Executed performance testing with JMeter.</li>
+          <li>Collaborated with developers on issue resolution.</li>
         </ul>
       </div>
-      <div class="exp-card">
+      <div class="card">
         <h3>Mphasis</h3>
-        <p>QA Engineer | Jun 2018 – Jun 2020</p>
+        <h4>QA Engineer | Jun 2018 – Jun 2020</h4>
         <ul>
-          <li>Regression & smoke testing with Selenium, Jenkins.</li>
-          <li>Developed SQL queries for backend testing.</li>
-          <li>Improved hospital resource allocation by 18%.</li>
+          <li>Automated regression & smoke testing (Selenium, Jenkins).</li>
+          <li>Executed SQL queries for backend validation.</li>
+          <li>Improved QA process efficiency by 20%.</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="projects">
+  <!-- Projects -->
+  <section id="projects">
     <h2>My Projects</h2>
-    <div class="project-cards">
-      <div class="project-card">
-        <div class="project-inner">
-          <div class="project-front">
+    <div class="projects-grid">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
             <img src="playwright-cross-browser_831x542.jpg" alt="Playwright Project">
-            <h3>Playwright Automation</h3>
+            <h3>Playwright Automation Framework</h3>
           </div>
-          <div class="project-back">
+          <div class="flip-card-back">
             <p>Framework built with Playwright integrated into CI/CD (GitHub Actions, CircleCI, Azure DevOps). Supports parallel execution, advanced reporting, and reusable Page Object Models.</p>
-            <a href="https://github.com/SubhanKhanPathan99/PLA_Automation_Tutorial" target="_blank">View on GitHub</a>
+            <a href="https://github.com/SubhanKhanPathan99/playwright-framework" target="_blank">View on GitHub</a>
           </div>
         </div>
       </div>
-
-      <div class="project-card">
-        <div class="project-inner">
-          <div class="project-front">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
             <img src="dbms.jpg" alt="DBMS Project">
             <h3>DBMS Project</h3>
           </div>
-          <div class="project-back">
+          <div class="flip-card-back">
             <p>Database Management System project designed for efficient queries, schema optimization, and real-time CRUD operations.</p>
             <a href="https://github.com/SubhanKhanPathan99/DBMS-PROJECT" target="_blank">View on GitHub</a>
           </div>
@@ -302,66 +315,37 @@
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="skills">
+  <!-- Skills -->
+  <section id="skills">
     <h2>My Skills</h2>
-    <div class="skill-tags">
-      <span class="skill">Java</span>
-      <span class="skill">Python</span>
-      <span class="skill">JavaScript</span>
-      <span class="skill">Selenium WebDriver</span>
-      <span class="skill">Cypress</span>
-      <span class="skill">Playwright</span>
-      <span class="skill">SQL</span>
-      <span class="skill">Jenkins</span>
-      <span class="skill">GitHub Actions</span>
-      <span class="skill">Azure DevOps</span>
-      <span class="skill">CircleCI</span>
-      <span class="skill">AWS Cloud</span>
-      <span class="skill">Docker</span>
-      <span class="skill">Git</span>
-      <span class="skill">Postman</span>
+    <div class="skills-list">
+      <div class="skill">Java</div>
+      <div class="skill">Python</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">Selenium WebDriver</div>
+      <div class="skill">Cypress</div>
+      <div class="skill">Playwright</div>
+      <div class="skill">SQL</div>
+      <div class="skill">Jenkins</div>
+      <div class="skill">GitHub Actions</div>
+      <div class="skill">Azure DevOps</div>
+      <div class="skill">CircleCI</div>
+      <div class="skill">AWS Cloud</div>
+      <div class="skill">Docker</div>
+      <div class="skill">Git</div>
+      <div class="skill">Postman</div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
+  <!-- Contact -->
+  <section id="contact">
     <h2>Contact Me</h2>
-    <div class="contact-links">
-      <a href="tel:+13169259995"><i class="fas fa-phone"></i> +1 (316) 925-9995</a>
-      <a href="mailto:subhankhanpathan99@gmail.com"><i class="fas fa-envelope"></i> subhankhanpathan99@gmail.com</a>
-      <a href="https://www.linkedin.com/in/subhankhanpathan99" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a href="https://github.com/SubhanKhanPathan99" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    <div class="contact-grid">
+      <a href="tel:+13169259995" class="contact-item">📞 +1 (316) 925-9995</a>
+      <a href="mailto:subhankhanpathan99@gmail.com" class="contact-item">✉️ subhankhanpathan99@gmail.com</a>
+      <a href="https://www.linkedin.com/in/subhankhanpathan99" class="contact-item" target="_blank">🔗 LinkedIn</a>
+      <a href="https://github.com/SubhanKhanPathan99" class="contact-item" target="_blank">💻 GitHub</a>
     </div>
   </section>
-
-  <!-- JS Role Animation -->
-  <script>
-    const roles = ["QA Automation Engineer", "Selenium/Cypress Specialist", "Playwright Expert", "CI/CD & Cloud Enthusiast"];
-    let roleIndex = 0;
-    let charIndex = 0;
-    const roleElement = document.getElementById("role");
-
-    function typeRole() {
-      if (charIndex < roles[roleIndex].length) {
-        roleElement.textContent += roles[roleIndex].charAt(charIndex);
-        charIndex++;
-        setTimeout(typeRole, 100);
-      } else {
-        setTimeout(eraseRole, 1500);
-      }
-    }
-    function eraseRole() {
-      if (charIndex > 0) {
-        roleElement.textContent = roles[roleIndex].substring(0, charIndex - 1);
-        charIndex--;
-        setTimeout(eraseRole, 50);
-      } else {
-        roleIndex = (roleIndex + 1) % roles.length;
-        setTimeout(typeRole, 200);
-      }
-    }
-    document.addEventListener("DOMContentLoaded", typeRole);
-  </script>
 </body>
 </html>
